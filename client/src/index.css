@@ -1,0 +1,96 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/* ── CSS Custom Properties ────────────────────────────── */
+:root {
+  --color-green-950: #012604;
+  --color-green-700: #126009;
+  --color-green-100: #E8F5E9;
+  --color-gold-400:  #EBCC5A;
+  --color-gold-600:  #D4AE3A;
+}
+
+/* ── Base Resets ──────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "SF Pro Display", "SF Pro Text", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #0D1F0D;
+  background-color: #FAFAFA;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  letter-spacing: -0.015em;
+  overflow-x: hidden;
+}
+
+/* ── Reusable Tailwind Component Shortcuts ────────────── */
+@layer components {
+  /* Primary CTA button — gold fill */
+  .btn-primary {
+    @apply bg-gold-400 hover:bg-gold-600 text-green-950
+           font-semibold px-6 py-3 rounded-lg
+           transition-colors duration-250 cursor-pointer;
+  }
+
+  /* Secondary button — green outline */
+  .btn-outline {
+    @apply border-2 border-green-700 text-green-700
+           hover:bg-green-700 hover:text-white
+           font-semibold px-6 py-3 rounded-lg
+           transition-all duration-250 cursor-pointer;
+  }
+
+  /* Ghost button — gold outline for dark backgrounds */
+  .btn-ghost-gold {
+    @apply border-2 border-gold-400 text-gold-400
+           hover:bg-gold-400 hover:text-green-950
+           font-semibold px-6 py-3 rounded-lg
+           transition-all duration-250 cursor-pointer;
+  }
+
+  /* Standard section padding */
+  .section-pad {
+    @apply py-20 px-5 md:px-10 lg:px-14 xl:px-20;
+  }
+
+  /* Section heading style */
+  .section-title {
+    @apply text-h2 text-green-950 font-bold mb-3;
+  }
+
+  /* Gold underline accent under headings */
+  .section-title-accent::after {
+    content: '';
+    @apply block w-16 h-1 bg-gold-400 mt-3 rounded-full;
+  }
+
+  /* Service/Product card base */
+  .card {
+    @apply bg-white rounded-card shadow-card
+           hover:shadow-card-hover hover:-translate-y-1
+           transition-all duration-350 p-6;
+  }
+}
+
+/* ── Custom Animations ────────────────────────────────── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+  width: max-content;
+}
+
+.group:hover .animate-marquee {
+  animation-play-state: paused;
+}
