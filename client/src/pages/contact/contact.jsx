@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import * as Icons from 'lucide-react';
 import { motion } from 'framer-motion';
 import { SERVICES } from '../../constants/services';
+import { toast } from 'react-hot-toast';
 
 function Contact() {
   const location = useLocation();
@@ -56,14 +57,14 @@ function Contact() {
       });
 
       if (response.ok) {
-        alert('Thank you for your message. We have received it and will get back to you soon!');
+        toast.success('Thank you for your message. We have received it and will get back to you soon!');
         setFormData({ fullName: '', email: '', phone: '', subject: '', message: '' });
       } else {
-        alert('There was an issue sending your message. Please try again later.');
+        toast.error('There was an issue sending your message. Please try again later.');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Network error. Please ensure the server is running.');
+      toast.error('Network error. Please ensure the server is running.');
     }
   };
 
@@ -276,14 +277,13 @@ function Contact() {
 
               {/* Message */}
               <div className="flex flex-col md:flex-row gap-2 md:gap-4 pt-4">
-                <label htmlFor="message" className="text-green-950 font-semibold md:w-1/6">Message *</label>
+                <label htmlFor="message" className="text-green-950 font-semibold md:w-1/6">Message</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Tell us how we can help you..."
-                  required
                   rows="6"
                   maxLength={1000}
                   className="w-full md:w-5/6 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gold-400/50 focus:border-gold-400 transition-colors resize-none"

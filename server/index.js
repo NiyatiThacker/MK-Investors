@@ -56,7 +56,7 @@ function sanitizeInput(input) {
 app.post('/api/contact', contactLimiter, async (req, res) => {
   const { fullName, email, phone, subject, message } = req.body;
 
-  if (!fullName || !email || !subject || !message) {
+  if (!fullName || !email || !subject) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
@@ -66,7 +66,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     Email: sanitizeInput(email),
     'Phone Number': sanitizeInput(phone || ''),
     Subject: sanitizeInput(subject),
-    Message: sanitizeInput(message)
+    Message: sanitizeInput(message || '')
   };
 
   try {
