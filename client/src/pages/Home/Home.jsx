@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import * as Icons from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -73,7 +73,7 @@ const TESTIMONIALS = [
   },
   {
     stars: 5,
-    text: "SBS Investments has transformed my portfolio. Their SIP recommendations are spot-on, and their ongoing rebalancing advice has kept me on track.",
+    text: "MK Investors has transformed my portfolio. Their SIP recommendations are spot-on, and their ongoing rebalancing advice has kept me on track.",
     name: "Rajesh Patel",
     date: "Mar 19, 2026",
     avatar: "https://ui-avatars.com/api/?name=Rajesh+Patel&background=random",
@@ -88,20 +88,80 @@ const TESTIMONIALS = [
 ];
 
 function Home() {
-  // Extract 4 main services for the preview section
-  const previewServices = SERVICES.slice(0, 4);
+  const midIndex = Math.floor((SERVICES.length - 1) / 2); // Dynamically find the midpoint card
+  const [activeIndex, setActiveIndex] = useState(midIndex);
+  const scrollContainerRef = useRef(null);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    setIsTouch(window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 1024);
+  }, []);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      // Delay slightly to ensure browser has rendered elements and layout is complete
+      setTimeout(() => {
+        const cardWidth = container.querySelector('.scroll-snap-item')?.clientWidth || 320;
+        const gap = 16; // 1rem is 16px
+        // Scroll to center the midpoint card
+        container.scrollLeft = midIndex * (cardWidth + gap);
+        setActiveIndex(midIndex);
+      }, 100);
+    }
+  }, []);
+
+  const handleScroll = (e) => {
+    const container = e.currentTarget;
+    const scrollLeft = container.scrollLeft;
+    const viewportCenter = scrollLeft + container.clientWidth / 2;
+    const items = container.querySelectorAll('.scroll-snap-item');
+    let minDistance = Infinity;
+    let activeIdx = midIndex;
+
+    items.forEach((item, idx) => {
+      const itemCenter = item.offsetLeft + item.clientWidth / 2;
+      const distance = Math.abs(viewportCenter - itemCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        activeIdx = idx;
+      }
+    });
+
+    setActiveIndex(activeIdx);
+  };
+
+  const serviceImages = {
+    'financial-planning': '/images/services/financial-planning.jpg',
+    'retirement-planning': '/images/services/retirement-planning.jpg',
+    'investment-management': '/images/services/investment-management.jpg',
+    'mutual-fund-sip': '/images/services/mutual-fund-sip.jpg',
+    'tax-planning': '/images/services/tax-planning.jpg',
+    'corporate-retail-loans': '/images/services/corporate-retail-loans.jpg',
+    'insurance-solutions': '/images/services/insurance-solutions.jpg',
+    'nri-investment': '/images/services/nri-investment.jpg',
+    'portfolio-review': '/images/services/portfolio-review.jpg',
+    'estate-planning': '/images/services/estate-planning.jpg'
+  };
 
   // Extract 3 main products for the featured product strip
   const featuredProducts = PRODUCTS.filter(p => ['equity-mf', 'sip', 'elss'].includes(p.id));
 
   return (
-    <div className="bg-white">
+    <div className="bg-soft-purple">
       {/* 1. Hero Section */}
-      <section className="relative bg-gradient-to-br from-green-950 via-green-900 to-green-950 text-white pt-32 pb-24 md:pt-40 md:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Abstract Gold Background Decor */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gold-400 blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-gold-400 blur-3xl transform -translate-x-1/3 translate-y-1/3"></div>
+      <section className="relative bg-[#1B0634] text-white pt-32 pb-24 md:pt-40 md:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background Image with Dark Color Gradient Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/hero-bg.jpg" 
+            className="w-full h-full object-cover opacity-45" 
+            alt="MK Investors Skyscraper Hero Background"
+          />
+          {/* Tint overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1B0634]/75 via-[#2F0B3A]/70 to-[#1B0634]/75 mix-blend-multiply"></div>
+          {/* Bottom fade out */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1B0634] via-transparent to-transparent"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10 text-center">
@@ -118,7 +178,7 @@ function Home() {
           </h1>
 
           <p className="text-gray-300 text-base md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
-            SBS Investments offers tailored portfolio advisory, mutual funds, tax planning, and customized loan solutions designed to protect and compound your wealth.
+            MK Investors offers tailored portfolio advisory, mutual funds, tax planning, and customized loan solutions designed to protect and compound your wealth.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -137,127 +197,165 @@ function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent opacity-40"></div>
       </section>
 
-      {/* 2. Stats Bar */}
-      <section className="bg-green-950 border-y border-gold-400/15 py-8 md:py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 divide-x divide-gold-400/10">
-            <StatItem value="15" label="Years of Experience" suffix="+" />
-            <StatItem value="5000" label="Clients Served" suffix="+" />
-            <StatItem value="250" label="Assets Under Advisory (Cr)" prefix="₹ " suffix="+" />
-            <StatItem value="10" label="Advisory Services" suffix="+" />
-          </div>
-        </div>
-      </section>
+
 
       {/* 3. What We Offer (Services Preview) */}
-      <section className="section-pad bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="section-title section-title-accent inline-block">What We Offer</h2>
-            <p className="text-ink-muted text-body-lg mt-4">
-              Explore our core wealth advisory services designed to meet your individual and corporate financial goals.
+      <section className="section-pad bg-green-950 text-white relative overflow-hidden py-24">
+        {/* Abstract Grid Pattern Decor */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none bg-grid-pattern z-0"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-4">
+            <h2 className="section-title section-title-accent inline-block text-white">What We Offer</h2>
+            <p className="text-gray-300 text-body-lg mt-4">
+              Explore our core wealth advisory services designed to simplify financial planning and help you make confident investment decisions.
             </p>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {previewServices.map((service, idx) => {
+        {/* Horizontal Scroll Snap Container */}
+        <div className="w-full relative z-10">
+          <ul ref={scrollContainerRef} className="scroll-snap-x" onScroll={handleScroll}>
+            {SERVICES.map((service, idx) => {
               const IconComponent = Icons[service.icon];
+              const bgImage = serviceImages[service.id] || 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&auto=format&fit=crop&q=80';
               return (
-                <motion.div 
-                  key={service.id} 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="card flex flex-col items-start border-l-4 border-green-700 hover:border-gold-400"
-                >
-                  <div className="p-3 bg-green-100 text-green-700 rounded-lg mb-5 transition-colors duration-350">
-                    {IconComponent ? <IconComponent size={24} /> : <Icons.HelpCircle size={24} />}
-                  </div>
-                  <h3 className="text-xl font-bold text-green-950 mb-3">{service.title}</h3>
-                  <p className="text-ink-muted text-sm leading-relaxed mb-6 flex-grow">{service.description}</p>
-                  <Link to={service.href} className="text-green-700 hover:text-gold-600 font-semibold text-sm flex items-center gap-1 group transition-colors duration-250 mt-auto">
-                    <span>Learn More</span>
-                    <Icons.ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
-                  </Link>
-                </motion.div>
+                <li key={service.id} className="scroll-snap-item">
+                  <article 
+                    className={`service-scroll-card flex flex-col justify-between h-full p-6 text-white group ${idx === activeIndex ? 'service-scroll-card-active' : ''}`}
+                    style={{ '--bg-image': `url(${bgImage})` }}
+                  >
+                    {/* Header */}
+                    <div className="flex justify-between items-start w-full relative z-10">
+                      <div className="p-3 bg-white/10 backdrop-blur-md text-gold-400 rounded-xl border border-white/10 shadow-sm">
+                        {IconComponent ? <IconComponent size={24} /> : <Icons.HelpCircle size={24} />}
+                      </div>
+                      <span className="text-[10px] uppercase tracking-widest text-gold-400/90 font-bold bg-green-950/80 px-2.5 py-1 rounded-full border border-gold-400/10">
+                        Advisory
+                      </span>
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex flex-col gap-3 relative z-10">
+                      <h3 className="text-xl md:text-2xl font-bold tracking-tight leading-tight service-card-reveal overflow-hidden">
+                        <span>{service.title}</span>
+                      </h3>
+                      <p className="text-gray-200 text-xs sm:text-sm leading-relaxed line-clamp-3">
+                        {service.description}
+                      </p>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="pt-2 relative z-10 w-full">
+                      <Link 
+                        to={service.href} 
+                        className="btn-primary w-full py-2.5 px-4 text-xs font-bold text-center flex items-center justify-center gap-1.5 rounded-lg shadow-md border border-gold-400/25 transition-all duration-300"
+                      >
+                        <span>Learn More</span>
+                        <Icons.ArrowUpRight size={14} />
+                      </Link>
+                    </div>
+                  </article>
+                </li>
               );
             })}
-          </div>
+          </ul>
         </div>
       </section>
 
       {/* 4. Why Choose Us */}
-      <section className="section-pad bg-green-100/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="section-title section-title-accent inline-block">Why Choose SBS Investments</h2>
-            <p className="text-ink-muted text-body-lg mt-4">
-              We stand apart through our client-first fiduciary commitment, customized portfolios, and proactive market advisory.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Value 1: Trust */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white p-8 rounded-card border border-green-700/5 shadow-sm text-center flex flex-col items-center hover:-translate-y-1 hover:shadow-md transition-all duration-300"
-            >
-              <div className="h-14 w-14 rounded-full bg-gold-400/10 border border-gold-400/20 text-gold-600 flex items-center justify-center mb-6">
-                <Icons.ShieldCheck size={28} />
+      <section className="section-pad bg-gradient-to-b from-[#F7F9F6] to-white relative overflow-hidden">
+        {/* Subtle background blob */}
+        <div className="absolute top-[20%] left-[-10%] w-[350px] h-[350px] rounded-full bg-gold-400/5 blur-[120px] pointer-events-none"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Content Column */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-400/10 border border-gold-400/25 text-gold-600 text-xs font-bold tracking-widest uppercase">
+                WHY MK INVESTORS
               </div>
-              <h3 className="text-xl font-bold text-green-950 mb-3">Certified Advisory</h3>
-              <p className="text-ink-muted text-sm leading-relaxed">
-                Our wealth advisors adhere to professional fiduciary standards, putting your investment safety and financial success above all else.
+              <h2 className="text-3xl md:text-4xl font-extrabold text-green-950 tracking-tight leading-tight">
+                Fiduciary Wealth Management Built on Absolute Trust
+              </h2>
+              <p className="text-ink-muted text-body-lg leading-relaxed">
+                We reject standard, pre-packaged portfolios. At MK Investors, every plan we formulate is uniquely aligned with your specific life milestones, backed by rigorous research and transparent advice.
               </p>
-            </motion.div>
-
-            {/* Value 2: Custom Strategy */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white p-8 rounded-card border border-green-700/5 shadow-sm text-center flex flex-col items-center hover:-translate-y-1 hover:shadow-md transition-all duration-300"
-            >
-              <div className="h-14 w-14 rounded-full bg-gold-400/10 border border-gold-400/20 text-gold-600 flex items-center justify-center mb-6">
-                <Icons.TrendingUp size={28} />
+              
+              {/* Credentials counter */}
+              <div className="pt-6 border-t border-green-900/10 grid grid-cols-2 gap-6">
+                <div>
+                  <div className="text-3xl font-extrabold text-green-950 font-sans tracking-tight mb-1">CFP®</div>
+                  <div className="text-ink-muted text-xs font-medium uppercase tracking-wider">Certified Planning</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-extrabold text-green-950 font-sans tracking-tight mb-1">100%</div>
+                  <div className="text-ink-muted text-xs font-medium uppercase tracking-wider">Fiduciary Duty</div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-green-950 mb-3">Tailored Strategies</h3>
-              <p className="text-ink-muted text-sm leading-relaxed">
-                We reject standard pre-packaged investment portfolios. Every plan we formulate is uniquely aligned with your specific life milestones.
-              </p>
-            </motion.div>
+            </div>
 
-            {/* Value 3: Experience */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white p-8 rounded-card border border-green-700/5 shadow-sm text-center flex flex-col items-center hover:-translate-y-1 hover:shadow-md transition-all duration-300"
-            >
-              <div className="h-14 w-14 rounded-full bg-gold-400/10 border border-gold-400/20 text-gold-600 flex items-center justify-center mb-6">
-                <Icons.History size={28} />
-              </div>
-              <h3 className="text-xl font-bold text-green-950 mb-3">Proven Track Record</h3>
-              <p className="text-ink-muted text-sm leading-relaxed">
-                Over 15 years, we have successfully managed wealth through multiple bull and bear markets, providing steady, compound growth.
-              </p>
-            </motion.div>
+            {/* Right Cards Column */}
+            <div className="lg:col-span-7 flex flex-col gap-6">
+              {[
+                {
+                  id: '01',
+                  title: 'Certified Advisory & Fiduciary standards',
+                  desc: 'Our wealth advisors adhere to strict fiduciary standards, putting your investment safety and financial success above all else.',
+                  icon: Icons.ShieldCheck,
+                  delay: 0.1
+                },
+                {
+                  id: '02',
+                  title: 'Tailored Milestones & Personalization',
+                  desc: 'We form strategic investment strategies based on your unique financial goals, tax profile, and retirement roadmap.',
+                  icon: Icons.TrendingUp,
+                  delay: 0.2
+                },
+                {
+                  id: '03',
+                  title: 'Data-Driven Market Navigation',
+                  desc: 'We utilize dynamic rebalancing and data-driven indicators to navigate volatility, protecting and compounding your capital.',
+                  icon: Icons.History,
+                  delay: 0.3
+                }
+              ].map((item) => {
+                const IconComp = item.icon;
+                return (
+                  <motion.div 
+                    key={item.id}
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: item.delay }}
+                    className="premium-why-card"
+                  >
+                    <span className="why-card-number">{item.id}</span>
+                    <div className="flex gap-5 items-start">
+                      <div className="why-card-icon-wrap shrink-0">
+                        <IconComp size={24} />
+                      </div>
+                      <div className="space-y-1.5 pr-8">
+                        <h3 className="text-lg font-bold text-green-950 tracking-tight">{item.title}</h3>
+                        <p className="text-ink-muted text-xs md:text-sm leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* 5. Featured Products Strip */}
-      <section className="section-pad bg-white">
+      <section className="section-pad bg-gradient-to-br from-[#1B0634] via-[#2F0B3A] to-[#1B0634] border-t border-b border-white/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="section-title section-title-accent inline-block">Featured Products</h2>
-            <p className="text-ink-muted text-body-lg mt-4">
+            <h2 className="section-title section-title-accent inline-block text-white">Featured Products</h2>
+            <p className="text-gray-300 text-body-lg mt-4">
               Explore high-conviction financial assets curated by our investment analysts for optimal returns.
             </p>
           </div>
@@ -265,6 +363,7 @@ function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {featuredProducts.map((product, idx) => {
               const IconComponent = Icons[product.icon] || Icons.TrendingUp;
+              const productImage = `/images/products/${product.id}.jpg`;
               return (
                 <motion.div 
                   key={product.id} 
@@ -272,26 +371,74 @@ function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="card relative flex flex-col items-start border border-green-700/10 hover:-translate-y-1 hover:shadow-md transition-all duration-300"
+                  className="product-hover-card"
                 >
-                  <span className="absolute top-4 right-4 bg-gold-400/10 border border-gold-400/20 text-green-950 text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                    {product.category}
-                  </span>
-                  <div className="p-3 bg-green-100 text-green-700 rounded-lg mb-5">
-                    <IconComponent size={22} />
-                  </div>
-                  <h3 className="text-lg font-bold text-green-950 mb-2">{product.name}</h3>
-                  <p className="text-ink-muted text-sm leading-relaxed mb-6 flex-grow">{product.description}</p>
-                  
-                  {/* Highlight bar */}
-                  <div className="w-full bg-green-100/50 rounded-lg px-4 py-2.5 mb-6 text-green-950 text-xs md:text-sm font-semibold border-l-2 border-green-700">
-                    {product.highlight}
+                  <div className="product-card-image-wrap">
+                    <img 
+                      src={productImage} 
+                      alt={product.name} 
+                      className="product-card-bg-img"
+                    />
+                    
+                    {/* Category Tag overlay on image */}
+                    <span className="absolute top-4 right-4 z-20 bg-gold-400 text-green-950 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                      {product.category}
+                    </span>
+                    
+                    {/* Dark gradient overlay on image */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 z-10"></div>
+                    
+                    {/* Title Overlay (visible before hover) */}
+                    <motion.div 
+                      className="product-card-title-overlay absolute bottom-0 left-0 right-0 p-6 z-15 text-white transition-opacity duration-300"
+                      initial={isTouch ? { opacity: 1 } : undefined}
+                      whileInView={isTouch ? { opacity: 0 } : undefined}
+                      viewport={{ once: false, margin: "-100px" }}
+                      transition={{ duration: 0.4, ease: "easeOut", delay: idx * 0.1 }}
+                    >
+                      <h3 className="text-xl font-bold tracking-tight text-white mb-1 drop-shadow-md">
+                        {product.name}
+                      </h3>
+                      <p className="text-gold-400 text-xs font-semibold drop-shadow-md">
+                        {product.highlight}
+                      </p>
+                    </motion.div>
                   </div>
 
-                  <Link to={`${ROUTES.PRODUCTS}#${product.id}`} className="text-green-700 hover:text-gold-600 font-semibold text-sm flex items-center gap-1 group transition-colors duration-250 mt-auto">
-                    <span>View Details</span>
-                    <Icons.ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
-                  </Link>
+                  {/* Sliding Card Content (slides up on hover) */}
+                  <motion.div 
+                    className="product-card-content flex flex-col justify-between h-auto"
+                    initial={isTouch ? { y: "100%" } : undefined}
+                    whileInView={isTouch ? { y: 0 } : undefined}
+                    viewport={{ once: false, margin: "-100px" }}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: idx * 0.1 }}
+                  >
+                    <div>
+                      <div className="flex gap-2.5 items-center mb-3">
+                        <div className="p-2 bg-green-950/5 text-green-700 rounded-lg">
+                          <IconComponent size={18} />
+                        </div>
+                        <span className="text-[10px] font-bold text-gold-600 uppercase tracking-widest">
+                          Featured Product
+                        </span>
+                      </div>
+                      <h3 className="text-lg font-bold text-green-950 mb-2">{product.name}</h3>
+                      <p className="text-ink-muted text-xs leading-relaxed mb-4">{product.description}</p>
+                      
+                      {/* Highlight bar */}
+                      <div className="bg-green-50 rounded-lg px-3.5 py-2 mb-5 text-green-950 text-xs font-semibold border-l-2 border-green-700">
+                        {product.highlight}
+                      </div>
+                    </div>
+
+                    <Link 
+                      to={`${ROUTES.PRODUCTS}#${product.id}`} 
+                      className="text-green-700 hover:text-gold-600 font-semibold text-xs flex items-center gap-1 group transition-colors duration-250"
+                    >
+                      <span>View Details</span>
+                      <Icons.ArrowRight size={12} className="group-hover:translate-x-1 transition-transform duration-200" />
+                    </Link>
+                  </motion.div>
                 </motion.div>
               );
             })}
@@ -302,7 +449,7 @@ function Home() {
 
 
       {/* 7. Testimonials */}
-      <section className="py-24 bg-slate-50 relative overflow-hidden border-t border-gray-100">
+      <section className="py-24 bg-soft-purple relative overflow-hidden border-t border-[#120422]/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
           <h2 className="section-title section-title-accent inline-block">What Our Clients Say</h2>
           <p className="text-gray-500 text-lg mt-4 max-w-2xl mx-auto">
@@ -313,8 +460,8 @@ function Home() {
         {/* Marquee Container */}
         <div className="relative flex overflow-hidden group py-4">
           {/* Fade Masks */}
-          <div className="absolute top-0 bottom-0 left-0 w-16 md:w-48 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute top-0 bottom-0 right-0 w-16 md:w-48 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 bottom-0 left-0 w-16 md:w-48 bg-gradient-to-r from-[#F5F3F8] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 bottom-0 right-0 w-16 md:w-48 bg-gradient-to-l from-[#F5F3F8] to-transparent z-10 pointer-events-none"></div>
 
           <div className="flex animate-marquee gap-6 px-3">
             {[...TESTIMONIALS, ...TESTIMONIALS].map((t, idx) => (

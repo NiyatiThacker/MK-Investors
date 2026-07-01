@@ -1,5 +1,16 @@
-node_modules
+# Dependencies
+node_modules/
+client/node_modules/
+chatbot-backend/venv/
+
+# Production build
+dist/
+client/dist/
+
+# Python cache
+**/__pycache__/
+*.pyc
+
+# Secrets
+chatbot-backend/.env
 .env
-dist
-build
-.DS_Store

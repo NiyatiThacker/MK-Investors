@@ -3,11 +3,16 @@
 
 /* ── CSS Custom Properties ────────────────────────────── */
 :root {
-  --color-green-950: #012604;
-  --color-green-700: #126009;
-  --color-green-100: #E8F5E9;
-  --color-gold-400:  #EBCC5A;
-  --color-gold-600:  #D4AE3A;
+  --color-green-950: #1B0634;
+  --color-green-900: #2F0B3A;
+  --color-green-700: #A65B4A;
+  --color-green-600: #8F4D3E;
+  --color-green-100: #FAF2EB;
+  --color-green-50:  #FDF8F5;
+  --color-gold-400:  #DDA16D;
+  --color-gold-600:  #C58B55;
+  --font-playfair:    "Playfair Display", Georgia, serif;
+  --font-inter:       "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* ── Base Resets ──────────────────────────────────────── */
@@ -21,9 +26,8 @@ html {
 }
 
 body {
-  font-family: "SF Pro Display", "SF Pro Text", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #0D1F0D;
+  font-family: var(--font-inter);
+  color: #433A34;
   background-color: #FAFAFA;
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
@@ -31,29 +35,46 @@ body {
   overflow-x: hidden;
 }
 
+h1, h2, h3, h4, h5, h6, .section-title {
+  font-family: var(--font-playfair);
+}
+
 /* ── Reusable Tailwind Component Shortcuts ────────────── */
 @layer components {
   /* Primary CTA button — gold fill */
   .btn-primary {
-    @apply bg-gold-400 hover:bg-gold-600 text-green-950
+    @apply bg-gold-400 text-green-950
            font-semibold px-6 py-3 rounded-lg
            transition-colors duration-250 cursor-pointer;
+  }
+  @media (hover: hover) {
+    .btn-primary:hover {
+      @apply bg-gold-600;
+    }
   }
 
   /* Secondary button — green outline */
   .btn-outline {
     @apply border-2 border-green-700 text-green-700
-           hover:bg-green-700 hover:text-white
            font-semibold px-6 py-3 rounded-lg
            transition-all duration-250 cursor-pointer;
+  }
+  @media (hover: hover) {
+    .btn-outline:hover {
+      @apply bg-green-700 text-white;
+    }
   }
 
   /* Ghost button — gold outline for dark backgrounds */
   .btn-ghost-gold {
     @apply border-2 border-gold-400 text-gold-400
-           hover:bg-gold-400 hover:text-green-950
            font-semibold px-6 py-3 rounded-lg
            transition-all duration-250 cursor-pointer;
+  }
+  @media (hover: hover) {
+    .btn-ghost-gold:hover {
+      @apply bg-gold-400 text-green-950;
+    }
   }
 
   /* Standard section padding */
@@ -75,8 +96,12 @@ body {
   /* Service/Product card base */
   .card {
     @apply bg-white rounded-card shadow-card
-           hover:shadow-card-hover hover:-translate-y-1
            transition-all duration-350 p-6;
+  }
+  @media (hover: hover) {
+    .card:hover {
+      @apply shadow-card-hover -translate-y-1;
+    }
   }
 }
 
@@ -94,3 +119,567 @@ body {
 .group:hover .animate-marquee {
   animation-play-state: paused;
 }
+
+/* ── Scroll Snapping Horizontal List (What We Offer) ───── */
+.bg-grid-pattern {
+  --size: 40px;
+  --line: rgba(221, 161, 109, 0.12); /* gold accent lines */
+  background: linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
+              linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
+  mask: radial-gradient(circle at center, white, transparent 80%);
+}
+
+.scroll-snap-x {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--card-size, 280px);
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 3rem calc(50vw - (var(--card-size, 280px) / 2));
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-snap-x::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Safari/Chrome */
+}
+
+.scroll-snap-item {
+  scroll-snap-align: center;
+}
+
+/* Service Card Container */
+.service-scroll-card {
+  width: var(--card-size, 280px);
+  aspect-ratio: 3 / 4.2;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  background-color: #2F0B3A; /* Deep Plum background */
+  transform: scale(0.92);
+  filter: grayscale(0.8) brightness(0.65);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              filter 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.service-scroll-card::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.service-scroll-card::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.7) contrast(1.05);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Active focused card styling */
+.service-scroll-card-active {
+  transform: scale(1.03);
+  filter: grayscale(0) brightness(1.05);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(221, 161, 109, 0.3);
+}
+
+.service-scroll-card-active::after {
+  transform: scale(1.05);
+}
+
+/* Responsive card size variables */
+:root {
+  --card-size: 280px;
+}
+@media (min-width: 768px) {
+  :root {
+    --card-size: 320px;
+  }
+}
+
+/* Text reveal styling */
+.service-card-reveal {
+  clip-path: inset(0 0 0 0);
+}
+
+.service-card-reveal > span {
+  display: inline-block;
+  translate: 0 100%;
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.service-scroll-card-active .service-card-reveal > span {
+  translate: 0 0;
+  opacity: 1;
+}
+
+/* Featured Products Hover Cards */
+.product-hover-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  height: 400px; /* 400px height for all devices to guarantee text space */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  background-color: #1B0634; /* Dark violet base */
+  border: 1px solid rgba(221, 161, 109, 0.1);
+}
+
+.product-card-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.product-card-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.product-card-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 20;
+  border-radius: 1.25rem 1.25rem 0 0;
+  border-top: 1px solid rgba(221, 161, 109, 0.15);
+}
+
+.product-card-title-overlay {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* Let clicks pass through to container */
+}
+
+/* Hover effects for Desktop (hover support only) */
+@media (hover: hover) {
+  .product-hover-card:hover .product-card-bg-img {
+    transform: scale(1.08);
+  }
+
+  .product-hover-card:hover .product-card-content {
+    transform: translateY(0);
+  }
+
+  .product-hover-card:hover .product-card-title-overlay {
+    opacity: 0;
+  }
+}
+
+.glass-product-card {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%), 
+              rgba(47, 11, 58, 0.55);
+  border-radius: 20px;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  overflow: hidden;
+  border: 1px solid rgba(221, 161, 109, 0.2);
+  border-top-color: rgba(255, 255, 255, 0.35);
+  border-left-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.glass-product-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Tracking light hover glow */
+.glass-product-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at var(--x, 0px) var(--y, 0px), rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@media (hover: hover) {
+  .glass-product-card:hover::after {
+    opacity: 1;
+  }
+}
+
+.glass-card-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: white;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.glass-card-image {
+  position: relative;
+  width: 100%;
+  height: 170px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+@media (hover: hover) {
+  .glass-product-card:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+  }
+
+  .glass-product-card:hover .glass-card-image img {
+    transform: scale(1.08);
+  }
+}
+
+.glass-card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ffffff, #dcdcdc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.glass-card-text {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.glass-card-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33%;
+}
+
+.glass-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #DDA16D, #A65B4A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-type {
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.glass-card-button {
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-top: 10px;
+  align-self: center;
+}
+
+@media (hover: hover) {
+  .glass-card-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(221, 161, 109, 0.4);
+    box-shadow: 0 5px 15px rgba(221, 161, 109, 0.2);
+    transform: translateY(-2px) !important;
+    color: #DDA16D;
+  }
+}
+
+/* Background floating shapes animation */
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  100% {
+    transform: translateY(-30px) translateX(15px) scale(1.05);
+  }
+}
+
+.animate-float {
+  animation: floatAnimation 8s infinite alternate ease-in-out;
+}
+
+.animate-float-delayed {
+  animation: floatAnimation 8s infinite alternate ease-in-out;
+  animation-delay: 2s;
+}
+
+.animate-float-slow {
+  animation: floatAnimation 12s infinite alternate ease-in-out;
+  animation-delay: 4s;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .glass-product-card {
+    height: auto;
+  }
+  
+  .glass-card-image {
+    height: 180px;
+  }
+  
+  .glass-card-text {
+    margin-bottom: 15px;
+  }
+}
+
+/* Premium Value and Feature Cards */
+.premium-why-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAFAF7 100%);
+  border: 1px solid rgba(221, 161, 109, 0.15);
+  border-radius: 20px;
+  padding: 2.25rem 2rem;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 20px rgba(27, 6, 52, 0.02);
+}
+
+@media (hover: hover) {
+  .premium-why-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(221, 161, 109, 0.5);
+    box-shadow: 0 20px 40px rgba(221, 161, 109, 0.08), 
+                0 1px 0 rgba(221, 161, 109, 0.15);
+  }
+  
+  .premium-why-card:hover .why-card-icon-wrap {
+    transform: scale(1.05);
+    background-color: rgba(221, 161, 109, 0.15);
+    border-color: rgba(221, 161, 109, 0.35);
+  }
+
+  .premium-why-card:hover .why-card-number {
+    transform: translateY(-10px) scale(1.05);
+    opacity: 0.12;
+  }
+}
+
+.why-card-number {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 5.5rem;
+  font-weight: 800;
+  color: #DDA16D;
+  opacity: 0.05;
+  user-select: none;
+  font-family: 'Playfair Display', serif, Georgia;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.why-card-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  background-color: rgba(221, 161, 109, 0.08);
+  border: 1px solid rgba(221, 161, 109, 0.2);
+  color: #B28350;
+  margin-bottom: 1.75rem;
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Premium Stat Pills */
+.premium-stat-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: rgba(221, 161, 109, 0.06);
+  border: 1px solid rgba(221, 161, 109, 0.15);
+  color: #B28350;
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+/* Glass Value Cards (Dark Theme - About Page) */
+.glass-value-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%),
+              rgba(18, 4, 34, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.glass-value-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(221, 161, 109, 0.5), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@media (hover: hover) {
+  .glass-value-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(221, 161, 109, 0.35);
+    box-shadow: 0 20px 40px rgba(221, 161, 109, 0.05),
+                0 4px 24px rgba(0, 0, 0, 0.4);
+  }
+  
+  .glass-value-card:hover::before {
+    opacity: 1;
+  }
+  
+  .glass-value-card:hover .glass-value-icon {
+    transform: scale(1.1) rotate(5deg);
+    background-color: rgba(221, 161, 109, 0.2);
+    color: #F3C68F;
+    box-shadow: 0 0 20px rgba(221, 161, 109, 0.25);
+  }
+}
+
+.glass-value-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1.25rem;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #DDA16D;
+  margin-bottom: 2rem;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              background-color 0.4s ease,
+              color 0.4s ease,
+              box-shadow 0.4s ease;
+}
+
+/* Light Theme Outline Cards (About Page Why Choose Us) */
+.premium-outline-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 42, 29, 0.08);
+  border-radius: 1.25rem;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.premium-outline-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  background-color: rgba(27, 6, 52, 0.03);
+  color: #1B0634;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (hover: hover) {
+  .premium-outline-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(221, 161, 109, 0.4);
+    box-shadow: 0 16px 32px rgba(221, 161, 109, 0.06);
+  }
+  
+  .premium-outline-card:hover .premium-outline-card-icon {
+    transform: scale(1.05);
+    background-color: rgba(221, 161, 109, 0.15);
+    color: #B28350;
+  }
+}
+
+.bg-soft-purple {
+  background-color: #F5F3F8;
+}
+
+

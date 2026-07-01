@@ -9,33 +9,28 @@ export default {
       // ── Color Palette ──────────────────────────────────────
       colors: {
         green: {
-          950: "#012604",    // Primary Dark Green (navbar, hero, footer)
-          700: "#126009",    // Primary Mid Green (buttons, accents)
-          100: "#E8F5E9",    // Light tint (section backgrounds, hover)
+          950: "#1B0634",    // Primary Deep Midnight Violet (navbar, hero, footer)
+          900: "#2F0B3A",    // Deep Plum (gradients)
+          700: "#A65B4A",    // Primary Copper/Terracotta (buttons, accents)
+          600: "#8F4D3E",    // Deep Copper hover state
+          100: "#FAF2EB",    // Warm Peach Cream (section backgrounds)
+          50:  "#FDF8F5",    // Pearl Cream (inputs, cards)
         },
         gold: {
-          400: "#EBCC5A",    // Primary Gold (accent, CTA, highlights)
-          600: "#D4AE3A",    // Gold hover state
+          400: "#DDA16D",    // Primary Sandy Peach (accent, CTA, highlights)
+          600: "#C58B55",    // Muted Peach hover state
         },
         // Text
         ink: {
-          dark:  "#0D1F0D",  // Primary body text on light backgrounds
-          muted: "#4B5563",  // Secondary / caption text
+          dark:  "#433A34",  // Warm Charcoal Brown body text
+          muted: "#7A7068",  // Secondary warm gray text
         },
       },
 
       // ── Typography ─────────────────────────────────────────
       fontFamily: {
-        // SF Pro → system font stack (no import required on Apple devices)
-        sans: [
-          '"SF Pro Display"',
-          '"SF Pro Text"',
-          "-apple-system",
-          "BlinkMacSystemFont",
-          '"Segoe UI"',
-          "Roboto",
-          "sans-serif",
-        ],
+        playfair: ["var(--font-playfair)"],
+        inter: ["var(--font-inter)"],
       },
 
       fontSize: {
@@ -62,9 +57,9 @@ export default {
 
       // ── Box Shadows ────────────────────────────────────────
       boxShadow: {
-        "card":       "0 4px 20px rgba(1, 38, 4, 0.08)",
-        "card-hover": "0 10px 40px rgba(1, 38, 4, 0.16)",
-        "navbar":     "0 2px 12px rgba(1, 38, 4, 0.10)",
+        "card":       "0 4px 20px rgba(24, 34, 56, 0.08)",
+        "card-hover": "0 10px 40px rgba(24, 34, 56, 0.16)",
+        "navbar":     "0 2px 12px rgba(24, 34, 56, 0.10)",
       },
 
       // ── Transitions & Animations ───────────────────────────

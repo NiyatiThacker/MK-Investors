@@ -94,6 +94,79 @@ const itemVariants = {
 function Products() {
   const location = useLocation();
 
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const multiplier = 8; // Gentle 3D rotation multiplier
+    const rotateY = (x / rect.width - 0.5) * multiplier;
+    const rotateX = (y / rect.height - 0.5) * -multiplier;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    
+    // Set custom properties to feed the radial hover glow in CSS
+    card.style.setProperty('--x', `${x}px`);
+    card.style.setProperty('--y', `${y}px`);
+  };
+
+  const handleMouseLeave = (e) => {
+    const card = e.currentTarget;
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+  };
+
+  const productStats = {
+    'equity-mf': [
+      { value: '15%', type: 'Target' },
+      { value: 'High', type: 'Equity' },
+      { value: '5Yr+', type: 'Horizon' }
+    ],
+    'debt-mf': [
+      { value: '7.5%', type: 'Yield' },
+      { value: 'Low', type: 'Risk' },
+      { value: '3Yr+', type: 'Horizon' }
+    ],
+    'sip': [
+      { value: '₹500', type: 'Min' },
+      { value: 'SIP', type: 'Mode' },
+      { value: 'Comp.', type: 'Benefit' }
+    ],
+    'term-insurance': [
+      { value: '₹2Cr', type: 'Cover' },
+      { value: 'Zero', type: 'Risk' },
+      { value: 'Life', type: 'Type' }
+    ],
+    'health-insurance': [
+      { value: '10K+', type: 'Hospitals' },
+      { value: 'Cash', type: 'Less' },
+      { value: 'Medic.', type: 'Type' }
+    ],
+    'nps': [
+      { value: '80C', type: 'Tax' },
+      { value: 'Retire', type: 'Goal' },
+      { value: 'Govt', type: 'Backed' }
+    ],
+    'elss': [
+      { value: '3Yr', type: 'Lock-in' },
+      { value: '80C', type: 'Tax' },
+      { value: 'Equity', type: 'Type' }
+    ],
+    'business-loan': [
+      { value: '10.5%', type: 'Rate' },
+      { value: 'Fast', type: 'Approval' },
+      { value: 'Coll.', type: 'Free' }
+    ],
+    'home-loan': [
+      { value: '8.5%', type: 'Rate' },
+      { value: '30Yr', type: 'Max' },
+      { value: 'Home', type: 'Asset' }
+    ],
+    'fixed-income': [
+      { value: '7.8%', type: 'Guar.' },
+      { value: 'None', type: 'Risk' },
+      { value: 'Fixed', type: 'Type' }
+    ]
+  };
+
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');
@@ -123,13 +196,27 @@ function Products() {
   };
 
   return (
-    <div className="bg-white pb-24">
+    <div className="bg-[#120422] pb-24 relative overflow-hidden min-h-screen">
+      {/* Dynamic Background Floating Shapes */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-[-100px] right-[-100px] w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-[#ff3998]/10 to-[#ff5f99]/15 blur-[100px] animate-float"></div>
+        <div className="absolute bottom-[-100px] left-[-100px] w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-[#0061ff]/10 to-[#60efff]/15 blur-[100px] animate-float-delayed"></div>
+        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-gradient-to-tr from-[#7700ff]/5 to-[#4400ff]/10 blur-[120px] animate-float-slow"></div>
+      </div>
+
       {/* 1. Hero Section */}
-      <section className="relative bg-gradient-to-br from-green-950 via-green-900 to-green-950 text-white pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Abstract Gold Background Decor */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gold-400 blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-gold-400 blur-3xl transform -translate-x-1/3 translate-y-1/3"></div>
+      <section className="relative bg-transparent text-white pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden z-10">
+        {/* Underlying Background Image with Dark Color Gradient Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/products-hero-bg.png" 
+            className="w-full h-full object-cover opacity-65" 
+            alt="MK Investors Products Hero Background"
+          />
+          {/* Tint overlay matching the Products page deep purple bg */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#120422]/75 via-[#1B0634]/50 to-[#120422]/75 mix-blend-multiply"></div>
+          {/* Bottom fade out to match the page background */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#120422] via-transparent to-transparent"></div>
         </div>
 
         <motion.div 
@@ -138,7 +225,7 @@ function Products() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto relative z-10 text-center flex flex-col items-center"
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gold-400/10 border border-gold-400/25 text-gold-400 text-xs md:text-sm font-bold tracking-widest uppercase mb-10 shadow-sm animate-pulse">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gold-400/10 border border-gold-400/25 text-gold-400 text-xs md:text-sm font-bold tracking-widest uppercase mb-10 shadow-sm">
             Premium Financial Products
           </div>
 
@@ -146,40 +233,34 @@ function Products() {
             Discover Our <span className="text-gold-400 relative after:content-[''] after:absolute after:bottom-1 after:left-0 after:w-full after:h-1 after:bg-gold-400/40">Products</span>
           </h1>
 
-          <p className="text-gray-300 text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-16">
-            Explore SBS Investments' curated selection of high-performance financial products, tailored to maximize your growth and protect your wealth.
+          <p className="text-gray-300 text-base md:text-xl leading-relaxed max-w-3xl mx-auto">
+            Explore MK Investors' curated selection of high-performance financial products, tailored to maximize your growth and protect your wealth.
           </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-12 md:gap-24 pt-8 md:pt-12 border-t border-gold-400/20 w-full max-w-2xl mx-auto">
-             <StatItem value="99" label="Client Retention Ratio" suffix="%" />
-             <StatItem value="800" label="Satisfied Clients" suffix="+" />
-             <StatItem value="15" label="Years of Excellence" suffix="+" />
-          </div>
         </motion.div>
         
         {/* Decorative Gold Bottom Wave Accent */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent opacity-40"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-400/40 to-transparent"></div>
       </section>
 
       {/* 2. Products Layout Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-24">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold text-green-950 mb-6 relative inline-block"
+            className="text-4xl md:text-5xl font-bold text-white mb-6 relative inline-block"
           >
             Our Key Products
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-1 bg-green-600 rounded"></div>
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-1 bg-gold-400 rounded"></div>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-ink-muted text-lg mt-8 leading-relaxed"
+            className="text-gray-300 text-lg mt-8 leading-relaxed"
           >
             High-conviction financial assets curated by our investment analysts for optimal returns and long-term security.
           </motion.p>
@@ -190,41 +271,63 @@ function Products() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
         >
           {PRODUCTS.map((product) => {
             const IconComponent = Icons[product.icon] || Icons.Box;
+            const imgPath = `/images/products/${product.id}.jpg`;
+            const stats = productStats[product.id] || [
+              { value: 'High', type: 'Growth' },
+              { value: 'None', type: 'Lock-in' },
+              { value: 'Fid.', type: 'Type' }
+            ];
 
             return (
-              <motion.div variants={itemVariants} key={product.id} id={product.id} className="bg-white rounded-xl shadow-sm border border-green-700/10 hover:border-gold-400 hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col p-8 group scroll-mt-24">
-                
-                {/* Icon & Category */}
-                <div className="flex justify-between items-start mb-6">
-                  <div className="h-16 w-16 rounded-full bg-green-50 text-green-700 flex items-center justify-center group-hover:bg-green-700 group-hover:text-gold-400 transition-colors duration-300">
-                    <IconComponent size={32} />
-                  </div>
-                  <span className="inline-block px-3 py-1 bg-gold-400/20 text-green-950 text-xs font-bold uppercase tracking-wider rounded">
+              <motion.div 
+                variants={itemVariants} 
+                key={product.id} 
+                id={product.id} 
+                className="glass-product-card scroll-mt-24"
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+              >
+                <div className="glass-card-content">
+                  {/* Category tag */}
+                  <span className="absolute top-4 right-4 z-20 bg-gold-400/20 border border-gold-400/30 text-gold-300 text-[10px] font-bold px-2.5 py-0.5 rounded uppercase tracking-wider">
                     {product.category}
                   </span>
+
+                  {/* Image container */}
+                  <div className="glass-card-image">
+                    <img src={imgPath} alt={product.name} />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="glass-card-title">{product.name}</h3>
+
+                  {/* Text Description */}
+                  <p className="glass-card-text">{product.description}</p>
+
+                  {/* Dynamic Stats Row */}
+                  <div className="glass-card-stats">
+                    {stats.map((stat, sIdx) => (
+                      <div key={sIdx} className="glass-stat">
+                        <span className="glass-value">{stat.value}</span>
+                        <span className="glass-type">{stat.type}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Invest Button */}
+                  <Link 
+                    to={ROUTES.CONTACT} 
+                    state={{ subject: getServiceCategory(product.id) }} 
+                    className="glass-card-button text-center w-full flex items-center justify-center gap-1.5"
+                  >
+                    <span>Invest Now</span>
+                    <Icons.ArrowRight size={14} />
+                  </Link>
                 </div>
-
-                {/* Content */}
-                <h3 className="text-2xl font-bold text-green-950 mb-4">{product.name}</h3>
-                <p className="text-ink-muted text-base leading-relaxed mb-8 flex-grow">
-                  {product.description}
-                </p>
-                
-                {/* Highlight Feature */}
-                <div className="mb-8 w-full bg-green-50 px-4 py-3 rounded-lg border-l-4 border-gold-400 shadow-sm">
-                  <span className="font-semibold text-sm text-green-950">{product.highlight}</span>
-                </div>
-
-                {/* Invest Now Button -> Redirect to Contact */}
-                <Link to={ROUTES.CONTACT} state={{ subject: getServiceCategory(product.id) }} className="btn-primary w-full flex items-center justify-center gap-2 px-6 py-3 shadow-md shadow-green-700/10 group-hover:bg-gold-500 group-hover:text-green-950 transition-colors">
-                  <span>Invest Now</span>
-                  <Icons.ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
-                </Link>
-
               </motion.div>
             );
           })}

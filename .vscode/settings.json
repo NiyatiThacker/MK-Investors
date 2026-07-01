@@ -1,3 +1,8 @@
 {
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "python.defaultInterpreterPath": "C:\\Users\\niyut\\Downloads\\Mk-investors\\chatbot-backend\\venv\\Scripts\\python.exe",
+  "python.pythonPath": "C:\\Users\\niyut\\Downloads\\Mk-investors\\chatbot-backend\\venv\\Scripts\\python.exe",
+  "python.analysis.extraPaths": [
+    "./chatbot-backend"
+  ]
 }

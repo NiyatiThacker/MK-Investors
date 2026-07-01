@@ -92,7 +92,7 @@ const itemVariants = {
 
 function About() {
   return (
-    <div className="bg-white">
+    <div className="bg-soft-purple">
       {/* 1. Hero Section */}
       <section className="relative bg-gradient-to-br from-green-950 via-green-900 to-green-950 text-white pt-32 pb-24 md:pt-40 md:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Abstract Gold Background Decor */}
@@ -111,7 +111,7 @@ function About() {
             Trusted Investment Advisors
           </div>
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight max-w-4xl mx-auto mb-6">
-            About <span className="text-gold-400 font-extrabold relative after:content-[''] after:absolute after:bottom-1 after:left-0 after:w-full after:h-1 after:bg-gold-400/40">SBS Investments</span>
+            About <span className="text-gold-400 font-extrabold relative after:content-[''] after:absolute after:bottom-1 after:left-0 after:w-full after:h-1 after:bg-gold-400/40">MK Investors</span>
           </h1>
           <p className="text-gray-300 text-base md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
             Empowering financial futures through expert investment guidance and innovative solutions
@@ -123,7 +123,7 @@ function About() {
       </section>
 
       {/* 2. Company Story */}
-      <section className="section-pad bg-white">
+      <section className="section-pad bg-soft-purple">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -134,96 +134,193 @@ function About() {
           <motion.div variants={itemVariants} className="lg:w-1/2">
             <h2 className="section-title section-title-accent inline-block mb-6">Who We Are – Your Trusted Partner in Financial Growth</h2>
             <p className="text-ink-muted text-body-lg mb-4">
-              Founded in 2010, SBS Investments has built a reputation as one of the most trusted and experienced financial advisory firms. At SBS Investments, we believe financial planning is more than just numbers — it's about empowering individuals to make informed decisions for a secure and prosperous future. 
+              At MK Investors, we believe that true wealth is built on trust. Our mission is to simplify financial planning and help you make confident investment decisions through honest advice and personalized solutions.
             </p>
             <p className="text-ink-muted text-body-lg">
-              Our mission is to guide clients through every step of their financial journey with clarity, confidence, and a personalized approach, ensuring long-term wealth creation and financial independence.
+              Every client has unique goals, and we take the time to understand yours before recommending the right investment, insurance, or wealth management strategy. With transparency, integrity, and a long-term approach, we're committed to being your trusted financial partner at every stage of your journey.
             </p>
           </motion.div>
           <motion.div variants={itemVariants} className="lg:w-1/2 w-full">
-             <div className="w-full aspect-video bg-green-100/50 rounded-card border border-green-700/10 flex items-center justify-center shadow-sm">
-                <Icons.Image className="text-green-700/20 w-16 h-16" />
-                <span className="sr-only">Company Photo Container</span>
-             </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="p-6 bg-green-50/40 rounded-2xl border border-green-700/10 space-y-3 shadow-sm hover:border-gold-400/40 transition-colors duration-300">
+                <div className="w-10 h-10 rounded-xl bg-gold-400/10 text-gold-600 flex items-center justify-center border border-gold-400/20">
+                  <Icons.Compass size={20} />
+                </div>
+                <h4 className="font-bold text-green-950 text-base tracking-tight">Goal-Oriented Advice</h4>
+                <p className="text-ink-muted text-xs leading-relaxed">Portfolios tailored precisely to match child education, retirement, and family security timelines.</p>
+              </div>
+              <div className="p-6 bg-green-50/40 rounded-2xl border border-green-700/10 space-y-3 shadow-sm hover:border-gold-400/40 transition-colors duration-300">
+                <div className="w-10 h-10 rounded-xl bg-gold-400/10 text-gold-600 flex items-center justify-center border border-gold-400/20">
+                  <Icons.TrendingUp size={20} />
+                </div>
+                <h4 className="font-bold text-green-950 text-base tracking-tight">Balanced Allocation</h4>
+                <p className="text-ink-muted text-xs leading-relaxed">Strategic diversification across equities, debt, gold, and fixed-income to hedge against inflation.</p>
+              </div>
+              <div className="p-6 bg-green-50/40 rounded-2xl border border-green-700/10 space-y-3 shadow-sm hover:border-gold-400/40 transition-colors duration-300">
+                <div className="w-10 h-10 rounded-xl bg-gold-400/10 text-gold-600 flex items-center justify-center border border-gold-400/20">
+                  <Icons.Activity size={20} />
+                </div>
+                <h4 className="font-bold text-green-950 text-base tracking-tight">Active Rebalancing</h4>
+                <p className="text-ink-muted text-xs leading-relaxed">Continuous assessment and adjustment of portfolio holdings to lock in gains and limit downsides.</p>
+              </div>
+              <div className="p-6 bg-green-50/40 rounded-2xl border border-green-700/10 space-y-3 shadow-sm hover:border-gold-400/40 transition-colors duration-300">
+                <div className="w-10 h-10 rounded-xl bg-gold-400/10 text-gold-600 flex items-center justify-center border border-gold-400/20">
+                  <Icons.Layers size={20} />
+                </div>
+                <h4 className="font-bold text-green-950 text-base tracking-tight">Tax Shielding</h4>
+                <p className="text-ink-muted text-xs leading-relaxed">Utilizing structural deductions (ELSS, NPS) and capital gains harvesting to protect investment returns.</p>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
-      </section>
+      </section>      {/* 3. Founder Section */}
+      <section className="section-pad bg-gradient-to-br from-[#120422] to-[#1B0634] text-white relative overflow-hidden">
+        {/* Subtle blur highlights */}
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gold-400/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-green-700/5 rounded-full blur-[100px] pointer-events-none"></div>
 
-      {/* 3. Founder Section */}
-      <section className="section-pad bg-green-100/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="section-title section-title-accent inline-block">Meet Our Founder</h2>
-          </div>
-          <div className="bg-white rounded-card border border-green-700/5 shadow-sm p-8 md:p-12 flex flex-col md:flex-row gap-12 items-center md:items-start">
-            <div className="md:w-1/3 flex flex-col items-center">
-               <div className="w-48 h-48 rounded-full bg-green-50 border-4 border-gold-400/20 flex items-center justify-center mb-6 shadow-md overflow-hidden">
-                  <Icons.User className="text-green-700/20 w-24 h-24" />
-                  <span className="sr-only">Founder Photo Container</span>
-               </div>
-               <div className="flex gap-4">
-                 <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 hover:bg-gold-400 hover:text-white transition-colors cursor-pointer"><Icons.Globe size={18} /></div>
-                 <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 hover:bg-gold-400 hover:text-white transition-colors cursor-pointer"><Icons.Mail size={18} /></div>
-                 <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 hover:bg-gold-400 hover:text-white transition-colors cursor-pointer"><Icons.Phone size={18} /></div>
-                 <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 hover:bg-gold-400 hover:text-white transition-colors cursor-pointer"><Icons.MessageSquare size={18} /></div>
-               </div>
-            </div>
-            <div className="md:w-2/3">
-              <h3 className="text-2xl font-bold text-green-950 mb-2">Founder Name</h3>
-              <p className="text-gold-600 font-semibold mb-6 uppercase tracking-wider text-sm">Founder, SBS Investments</p>
-              <p className="text-ink-muted text-body-lg mb-6 leading-relaxed">
-                The visionary founder of SBS Investments is a certified financial advisor with extensive experience in mutual funds, SIPs, wealth planning, and portfolio management. The philosophy is simple yet powerful: financial independence comes from knowledge, discipline, and smart planning.
-              </p>
-              <p className="text-ink-muted text-body-lg mb-6 leading-relaxed">
-                Beyond client advisory, there is a deep passion for financial education, frequently engaging in sharing practical wealth-building strategies to shape the next generation of financially savvy professionals.
-              </p>
-              <blockquote className="border-l-4 border-gold-400 pl-6 py-4 bg-green-50/50 italic text-green-950 font-medium rounded-r-lg">
-                "I started SBS Investments with a simple belief: that every individual deserves honest, personalized financial advice. Today, we're proud to serve clients across India and abroad with the same passion and integrity."
-              </blockquote>
-            </div>
-          </div>
-        </div>
-      </section>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left: Founder Card Frame */}
+            <div className="lg:col-span-5 flex flex-col items-center">
+              <div className="relative w-full max-w-[320px] aspect-[4/5] rounded-2xl overflow-hidden border border-gold-400/30 bg-[#120422]/60 shadow-xl">
+                {/* Gold frame decorations */}
+                <div className="absolute inset-2 border border-gold-400/10 rounded-xl pointer-events-none"></div>
+                
+                {/* Subtle internal grid decoration */}
+                <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
+                
+                {/* Premium executive portrait placeholder */}
+                <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center space-y-4">
+                  <div className="p-4 rounded-full bg-gold-400/10 border border-gold-400/20 text-gold-400 shadow-inner">
+                    <Icons.User size={44} className="animate-pulse" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-white tracking-tight">Manthan Kakkad</h4>
+                    <p className="text-gold-400 text-xs font-semibold tracking-widest uppercase mt-1">Founder Executive Bio</p>
+                  </div>
+                </div>
+              </div>
 
-      {/* 4. Stats Bar */}
-      <section className="bg-green-950 border-y border-gold-400/15 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-x divide-gold-400/10">
-            <StatItem value="15" label="Years Experience" suffix="+" />
-            <StatItem value="5000" label="Happy Clients" suffix="+" />
-            <StatItem value="98" label="Client Retention Ratio" suffix="%" />
-            <StatItem value="18" label="Average Annual Growth" suffix="%" />
+              {/* Floating Social Connection Block */}
+              <div className="flex gap-4 mt-6">
+                {[
+                  { icon: Icons.Mail, href: "mailto:manthan@mkinvestors.com", title: "Email" },
+                  { icon: Icons.Globe, href: "#", title: "Website" },
+                  { icon: Icons.Phone, href: "tel:+919999999999", title: "Call" },
+                  { icon: Icons.MessageSquare, href: "https://wa.me/919999999999", title: "WhatsApp" }
+                ].map((soc, sIdx) => {
+                  const SocIcon = soc.icon;
+                  return (
+                    <a 
+                      key={sIdx} 
+                      href={soc.href}
+                      title={soc.title}
+                      className="h-10 w-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gold-400 hover:bg-gold-400 hover:text-green-950 transition-all duration-300 shadow-md hover:-translate-y-0.5"
+                    >
+                      <SocIcon size={18} />
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right: Biography details */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="space-y-2">
+                <span className="text-gold-400 uppercase tracking-widest text-xs md:text-sm font-bold block">ADVISORY LEADERSHIP</span>
+                <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-none">
+                  Manthan Kakkad
+                </h2>
+                <p className="text-gold-400 text-sm md:text-base font-bold tracking-wide uppercase">
+                  Founder & Lead Financial Advisor, MK Investors
+                </p>
+              </div>
+
+              <div className="w-16 h-1 bg-gold-400 rounded"></div>
+
+              <div className="space-y-4 text-gray-300 text-base md:text-lg leading-relaxed">
+                <p>
+                  Manthan Kakkad is a certified financial advisor with extensive experience in mutual funds, SIPs, retirement roadmaps, and customized loan solutions. Under his guidance, MK Investors operates on a simple, powerful philosophy: <strong className="text-white">true wealth compounding is a product of knowledge, discipline, and strategic asset allocation.</strong>
+                </p>
+                <p>
+                  Manthan regularly conducts wealth workshops and financial literacy seminars, educating individuals and families on the mechanics of financial independence. He is dedicated to raising the standard of wealth advisory through strict fiduciary loyalty.
+                </p>
+              </div>
+
+              {/* Professional Credentials List */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-white/10">
+                {[
+                  "Fiduciary Standard Commitment",
+                  "Certified Financial Planner Standards",
+                  "AMFI Registered Mutual Fund Advisor",
+                  "Tech-Driven Asset Allocation"
+                ].map((cred, cIdx) => (
+                  <div key={cIdx} className="flex items-center gap-2.5 text-xs md:text-sm text-gray-200">
+                    <Icons.CheckCircle2 size={16} className="text-gold-400 shrink-0" />
+                    <span>{cred}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Premium styled quote block */}
+              <div className="relative pt-6 pl-8 border-l-2 border-gold-400/60 bg-white/5 p-6 rounded-r-2xl border border-white/5">
+                <Icons.Quote size={40} className="absolute -top-3 left-4 text-gold-400/10 pointer-events-none" />
+                <p className="italic text-white text-base md:text-lg font-medium leading-relaxed">
+                  "Your goals inspire us. Your trust defines our commitment."
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* 5. Core Values */}
-      <section className="section-pad bg-white">
+      <section className="section-pad bg-[#120422] text-white relative overflow-hidden">
+        {/* Subtle background glow blob */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 rounded-full bg-gold-400/5 blur-[120px]"></div>
+        </div>
+
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
         >
-          <motion.div variants={itemVariants} className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="section-title section-title-accent inline-block">Our Core Values</h2>
+          <motion.div variants={itemVariants} className="text-center max-w-3xl mx-auto mb-20">
+            <span className="text-gold-400 uppercase tracking-widest text-xs md:text-sm font-bold block mb-4">OUR PRINCIPLES</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight inline-block">
+              Our Core Values
+            </h2>
+            <div className="w-16 h-1 bg-gold-400 mx-auto mt-6 rounded"></div>
           </motion.div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: 'Transparency', desc: 'Complete transparency in all our investment strategies and fee structures.', icon: Icons.Eye },
-              { title: 'Trust', desc: 'Building long-term relationships based on trust and consistent performance.', icon: Icons.ShieldCheck },
-              { title: 'Excellence', desc: 'Striving for excellence in every aspect of our investment services.', icon: Icons.Star },
-              { title: 'Security', desc: 'Ensuring the highest level of security for your investments and data.', icon: Icons.Lock },
-            ].map((v, i) => (
-              <motion.div variants={itemVariants} key={i} className="card flex flex-col items-center text-center border-t-4 border-t-transparent hover:border-t-gold-400 transition-colors duration-300 shadow-sm hover:shadow-md">
-                <div className="p-4 bg-green-100 text-green-700 rounded-full mb-6">
-                  <v.icon size={32} />
-                </div>
-                <h3 className="text-xl font-bold text-green-950 mb-3">{v.title}</h3>
-                <p className="text-ink-muted text-sm leading-relaxed">{v.desc}</p>
-              </motion.div>
-            ))}
+              { title: 'Transparency', desc: 'Complete transparency in all our investment strategies, performance reports, and fee structures.', icon: Icons.Eye },
+              { title: 'Trust', desc: 'Building long-term relationships based on fiduciary trust, integrity, and consistent client success.', icon: Icons.ShieldCheck },
+              { title: 'Excellence', desc: 'Striving for excellence in every aspect of our portfolio review and market advisory.', icon: Icons.Star },
+              { title: 'Security', desc: 'Ensuring the highest level of asset security, compliance, and confidentiality for your investments.', icon: Icons.Lock },
+            ].map((v, i) => {
+              const IconComp = v.icon;
+              return (
+                <motion.div 
+                  variants={itemVariants} 
+                  key={i} 
+                  className="glass-value-card flex flex-col items-center text-center"
+                >
+                  <div className="glass-value-icon">
+                    <IconComp size={28} />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 tracking-tight">{v.title}</h3>
+                  <p className="text-gray-300 text-xs md:text-sm leading-relaxed">{v.desc}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
       </section>
@@ -232,76 +329,26 @@ function About() {
       <section className="section-pad bg-green-100/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
           
-          {/* Team */}
-          <div>
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="section-title section-title-accent inline-block">Team SBS Investments</h2>
-            </div>
-            <div className="bg-white p-8 rounded-card border border-green-700/5 shadow-sm">
-              <div className="w-full h-80 md:h-96 bg-green-50 rounded-xl mb-8 flex items-center justify-center border border-green-700/10 overflow-hidden">
-                 <Icons.Users className="text-green-700/20 w-24 h-24" />
-                 <span className="sr-only">Team Photo Container</span>
+          {/* Personal Commitment */}
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-[#120422]/5 p-8 md:p-10 rounded-2xl border border-green-700/10 text-center relative overflow-hidden">
+              {/* Background decoration */}
+              <div className="absolute -top-10 -right-10 w-24 h-24 bg-gold-400/5 rounded-full blur-xl"></div>
+              
+              <div className="w-12 h-12 rounded-full bg-gold-400/10 text-gold-600 flex items-center justify-center border border-gold-400/20 mx-auto mb-6">
+                <Icons.ShieldCheck size={24} />
               </div>
-              <p className="text-ink-muted text-body-lg text-center max-w-4xl mx-auto leading-relaxed">
-                At SBS Investments, our strength lies in our dedicated and skilled team. Each member shares the same commitment to client success, bringing expertise in investment advisory, financial planning, and client education. From portfolio strategists to relationship managers, Team SBS Investments works seamlessly to ensure every client receives personalized attention and actionable financial guidance.
+              <h3 className="text-xl font-bold text-green-950 mb-4 tracking-tight">My Personal Commitment</h3>
+              <p className="text-ink-muted text-sm md:text-base leading-relaxed italic max-w-2xl mx-auto">
+                "As your personal financial advisor, my commitment is to put your interests first, always. I believe in establishing a fiduciary relationship built on absolute transparency, detailed regular portfolio reviews, and continuous client education. By combining deep research, personalized asset allocation, and disciplined execution, I work directly with you to help turn your financial goals into realities."
               </p>
-            </div>
-          </div>
-
-          {/* Seminars */}
-          <div>
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="section-title section-title-accent inline-block">Investment Awareness Seminars</h2>
-            </div>
-            
-            <div className="space-y-12">
-              {/* Seminar Row 1 */}
-              <div className="flex flex-col lg:flex-row gap-8 items-center bg-white p-6 md:p-8 rounded-card border border-green-700/5 shadow-sm hover:shadow-md transition-shadow">
-                 <div className="lg:w-1/2 w-full order-2 lg:order-1">
-                    <div className="flex items-start gap-4">
-                       <div className="p-3 bg-gold-400/20 text-gold-600 rounded-lg shrink-0 mt-1">
-                         <Icons.Mic size={24} />
-                       </div>
-                       <div>
-                         <h3 className="text-xl font-bold text-green-950 mb-3">Personal Finance Workshop</h3>
-                         <p className="text-ink-muted text-body-lg leading-relaxed">
-                           SBS Investments takes pride in spreading financial literacy beyond portfolios. We regularly organize investment awareness seminars for corporates, professionals, and students.
-                         </p>
-                       </div>
-                    </div>
-                 </div>
-                 <div className="lg:w-1/2 w-full order-1 lg:order-2">
-                    <div className="w-full aspect-video bg-green-50 rounded-xl flex flex-col items-center justify-center border border-green-700/10 shadow-sm overflow-hidden relative group">
-                       <Icons.Presentation className="text-green-700/20 w-16 h-16 transition-transform duration-500 group-hover:scale-110" />
-                       <span className="sr-only">Personal Finance Workshop Photo Container</span>
-                    </div>
-                 </div>
-              </div>
-
-              {/* Seminar Row 2 */}
-              <div className="flex flex-col lg:flex-row-reverse gap-8 items-center bg-white p-6 md:p-8 rounded-card border border-green-700/5 shadow-sm hover:shadow-md transition-shadow">
-                 <div className="lg:w-1/2 w-full order-2 lg:order-1">
-                    <div className="flex items-start gap-4">
-                       <div className="p-3 bg-gold-400/20 text-gold-600 rounded-lg shrink-0 mt-1">
-                         <Icons.BookOpen size={24} />
-                       </div>
-                       <div>
-                         <h3 className="text-xl font-bold text-green-950 mb-3">College Investment Seminar</h3>
-                         <p className="text-ink-muted text-body-lg leading-relaxed">
-                           We are often invited by colleges and management institutes to share practical insights on finance and investment, empowering MBA students and young professionals to make intelligent financial decisions for long-term growth.
-                         </p>
-                       </div>
-                    </div>
-                 </div>
-                 <div className="lg:w-1/2 w-full order-1 lg:order-2">
-                    <div className="w-full aspect-video bg-green-50 rounded-xl flex flex-col items-center justify-center border border-green-700/10 shadow-sm overflow-hidden relative group">
-                       <Icons.GraduationCap className="text-green-700/20 w-16 h-16 transition-transform duration-500 group-hover:scale-110" />
-                       <span className="sr-only">College Investment Seminar Photo Container</span>
-                    </div>
-                 </div>
+              <div className="mt-6 text-xs uppercase tracking-widest text-gold-600 font-bold">
+                — Manthan Kakkad, Founder
               </div>
             </div>
           </div>
+
+
 
           {/* Achievements */}
           <div>
@@ -339,7 +386,7 @@ function About() {
       </section>
 
       {/* 7. Our Approach */}
-      <section className="section-pad bg-white">
+      <section className="section-pad bg-soft-purple">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="section-title section-title-accent inline-block">Our Approach</h2>
@@ -376,36 +423,47 @@ function About() {
       </section>
 
       {/* 8. Why Choose Us */}
-      <section className="section-pad bg-green-100/50">
+      <section className="section-pad bg-gradient-to-b from-[#F7F9F6] to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="section-title section-title-accent inline-block">Why Choose SBS Investments?</h2>
-            <p className="text-ink-muted text-body-lg mt-4">
-              Choosing SBS Investments means choosing a partner committed to your financial growth and empowerment. We combine personalized strategies, transparency, and proven expertise to help clients achieve their financial goals.
+            <span className="text-gold-600 uppercase tracking-widest text-xs md:text-sm font-bold block mb-4">OUR COMMITMENT</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-green-950 tracking-tight leading-tight inline-block">
+              Why Choose MK Investors?
+            </h2>
+            <p className="text-ink-muted text-body-lg mt-6 leading-relaxed">
+              Choosing MK Investors means partnering with a wealth advisor dedicated to your growth, safety, and long-term financial freedom.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-             <div className="bg-white p-8 rounded-card border border-green-700/5 shadow-sm text-center hover:-translate-y-1 transition-transform duration-300">
-                <div className="text-4xl mb-4 bg-green-50 w-16 h-16 mx-auto flex items-center justify-center rounded-full">💼</div>
-                <h3 className="font-bold text-green-950 mb-3 text-lg">Personalized Strategies</h3>
-                <p className="text-ink-muted text-sm leading-relaxed">Tailored investment plans based on your unique financial goals and risk profile.</p>
-             </div>
-             <div className="bg-white p-8 rounded-card border border-green-700/5 shadow-sm text-center hover:-translate-y-1 transition-transform duration-300">
-                <div className="text-4xl mb-4 bg-green-50 w-16 h-16 mx-auto flex items-center justify-center rounded-full">🔍</div>
-                <h3 className="font-bold text-green-950 mb-3 text-lg">Complete Transparency</h3>
-                <p className="text-ink-muted text-sm leading-relaxed">Clear communication and transparent processes in all our investment recommendations.</p>
-             </div>
-             <div className="bg-white p-8 rounded-card border border-green-700/5 shadow-sm text-center hover:-translate-y-1 transition-transform duration-300">
-                <div className="text-4xl mb-4 bg-green-50 w-16 h-16 mx-auto flex items-center justify-center rounded-full">🏆</div>
-                <h3 className="font-bold text-green-950 mb-3 text-lg">Proven Expertise</h3>
-                <p className="text-ink-muted text-sm leading-relaxed">15+ years of experience delivering consistent results for our valued clients.</p>
-             </div>
-             <div className="bg-white p-8 rounded-card border border-green-700/5 shadow-sm text-center hover:-translate-y-1 transition-transform duration-300">
-                <div className="text-4xl mb-4 bg-green-50 w-16 h-16 mx-auto flex items-center justify-center rounded-full">🌍</div>
-                <h3 className="font-bold text-green-950 mb-3 text-lg">NRI Specialization</h3>
-                <p className="text-ink-muted text-sm leading-relaxed">Recognized as trusted NRI investment advisors delivering global solutions.</p>
-             </div>
-          </div>
+          
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {[
+              { title: 'Personalized Strategies', desc: 'Tailored investment plans based on your unique financial goals, tax profile, and life milestones.', icon: Icons.Briefcase },
+              { title: 'Complete Transparency', desc: 'Absolute transparency in advisory, zero hidden charges, and structured, clear communication.', icon: Icons.Search },
+              { title: 'Active Optimization', desc: 'Utilizing modern portfolio theory, advanced analytics, and constant tracking to optimize returns and lower risk.', icon: Icons.Award },
+              { title: 'NRI Specialization', desc: 'Recognized and trusted advisory delivering global financial and investment solutions for NRIs.', icon: Icons.Globe }
+            ].map((v, i) => {
+              const IconComp = v.icon;
+              return (
+                <motion.div 
+                  variants={itemVariants} 
+                  key={i} 
+                  className="premium-outline-card flex flex-col items-center text-center"
+                >
+                  <div className="premium-outline-card-icon">
+                    <IconComp size={24} />
+                  </div>
+                  <h3 className="font-bold text-green-950 mb-3 text-lg tracking-tight">{v.title}</h3>
+                  <p className="text-ink-muted text-xs md:text-sm leading-relaxed">{v.desc}</p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
       </section>
 
@@ -440,11 +498,11 @@ function About() {
       </section>
 
       {/* 10. Contact CTA Strip */}
-      <section className="bg-white py-20 px-4 md:px-8 text-center relative overflow-hidden border-t border-gold-400/10">
+      <section className="bg-soft-purple py-20 px-4 md:px-8 text-center relative overflow-hidden border-t border-gold-400/10">
         <div className="max-w-3xl mx-auto relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-green-950 tracking-tight">Connect With Us</h2>
           <p className="text-ink-muted mb-10 max-w-2xl mx-auto leading-relaxed text-base md:text-lg">
-            Your financial future deserves expert guidance and strategic planning. Connect with SBS Investments today and take the first step toward financial empowerment, long-term growth, and wealth creation.
+            Your financial future deserves expert guidance and strategic planning. Connect with MK Investors today and take the first step toward financial empowerment, long-term growth, and wealth creation.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to={ROUTES.CONTACT} className="btn-primary w-full sm:w-auto px-8 py-4 inline-flex items-center justify-center gap-2 group shadow-lg shadow-gold-400/15 text-lg">

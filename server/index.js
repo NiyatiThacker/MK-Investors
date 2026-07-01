@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json({ limit: '10kb' }));
 
 app.get('/', (req, res) => {
-  res.send('SBS Financial API is running...');
+  res.send('MK Investors API is running...');
 });
 
 const contactLimiter = rateLimit({

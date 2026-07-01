@@ -96,7 +96,7 @@ function Services() {
   }, [hash]);
 
   return (
-    <div className="bg-white pb-24">
+    <div className="bg-soft-purple pb-24">
       {/* 1. Hero Section */}
       <section className="relative bg-gradient-to-br from-green-950 via-green-900 to-green-950 text-white pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Abstract Gold Background Decor */}
@@ -114,15 +114,9 @@ function Services() {
             Elevate Your <span className="text-gold-400 relative after:content-[''] after:absolute after:bottom-1 after:left-0 after:w-full after:h-1 after:bg-gold-400/40">Financial Journey</span>
           </h1>
 
-          <p className="text-gray-300 text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-16">
+          <p className="text-gray-300 text-base md:text-xl leading-relaxed max-w-3xl mx-auto">
             Experience sophisticated financial advisory services crafted for discerning clients. Our comprehensive suite of solutions combines time-tested strategies with innovative approaches to deliver exceptional results.
           </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-12 md:gap-24 pt-8 md:pt-12 border-t border-gold-400/20 w-full max-w-2xl mx-auto">
-             <StatItem value="99" label="Client Retention Ratio" suffix="%" />
-             <StatItem value="800" label="Satisfied Clients" suffix="+" />
-             <StatItem value="15" label="Years of Excellence" suffix="+" />
-          </div>
         </div>
 
         {/* Decorative Gold Bottom Wave Accent */}

@@ -3,7 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Clock, ArrowRight, Check } from 'lucide-react';
 import { ROUTES } from '../../constants/routes';
 import { SERVICES } from '../../constants/services';
-import sbsLogo from '../../assets/sbs_financials_logo-removebg-preview.png';
+// logo image placeholder (currently text-only)
+
 
 // Custom SVG Social Icons (since brand icons are removed in recent Lucide versions)
 function LinkedinIcon({ size = 16, className = '' }) {
@@ -88,7 +89,7 @@ function Footer() {
   const location = useLocation();
 
   const handleCopyPhone = () => {
-    navigator.clipboard.writeText('+91 94272 17798');
+    navigator.clipboard.writeText('+91 98245 96906');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -106,14 +107,10 @@ function Footer() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }
             }} className="flex items-center gap-2 group self-start">
-              <img 
-                src={sbsLogo} 
-                alt="SBS Financials Logo" 
-                className="w-40 md:w-48 h-auto object-contain group-hover:scale-105 transition-transform duration-250"
-              />
+              <img src="/images/logo.png" alt="MK Investors Logo" className="h-16 w-auto object-contain transition-transform duration-250 group-hover:scale-105" />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed">
-              SBS Investments is a premier financial advisory firm dedicated to guiding clients through wealth generation, strategic investments, and reliable insurance planning.
+              MK Investors is a premier financial advisory service dedicated to simplifying financial planning, wealth generation, strategic investments, and reliable insurance planning.
             </p>
             {/* Social Icons */}
             <div className="flex items-center gap-4">
@@ -237,20 +234,20 @@ function Footer() {
             <ul className="flex flex-col gap-4 text-sm text-gray-300">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-gold-400 shrink-0 mt-0.5" />
-                <a href="https://maps.google.com/maps?q=Span%20Trade%20Center,%20Paldi%20Rd,%20Near%20Bony%20Travels,%20Pritam%20Nagar,%20Paldi,%20Ahmedabad,%20Gujarat%20380006" target="_blank" rel="noopener noreferrer" className="leading-relaxed hover:text-gold-400 transition-colors duration-200">
-                  Span Trade Centre, Paldi Rd, <br />Near Bony Travels, Pritam Nagar, Paldi,<br /> Ahmedabad, Gujarat 380006
+                <a href="https://maps.google.com/maps?q=Murlidhar+marketing,+bhavani+mandir+road,+main+bazar,+madhavpur-362230" target="_blank" rel="noopener noreferrer" className="leading-relaxed hover:text-gold-400 transition-colors duration-200">
+                  Murlidhar marketing, bhavani mandir road,<br />main bazar, madhavpur - 362230
                 </a>
               </li>
               <li className="flex items-center gap-3 group cursor-pointer w-fit" onClick={handleCopyPhone}>
                 {copied ? <Check size={18} className="text-green-500 shrink-0" /> : <Phone size={18} className="text-gold-400 shrink-0 group-hover:text-green-500 transition-colors duration-200" />}
                 <span className={`transition-colors duration-200 ${copied ? 'text-green-500' : 'group-hover:text-white'}`}>
-                  {copied ? 'Copied!' : '+91 94272 17798'}
+                  {copied ? 'Copied!' : '+91 98245 96906'}
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-gold-400 shrink-0" />
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=prospectssbs@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold-400 transition-colors duration-200">
-                  prospectssbs@gmail.com
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=manthankakkad50@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold-400 transition-colors duration-200">
+                  manthankakkad50@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -269,7 +266,7 @@ function Footer() {
       <div className="border-t border-gold-400/10 py-6 bg-green-950/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
           <div>
-            &copy; {new Date().getFullYear()} SBS Investments. All rights reserved.
+            &copy; {new Date().getFullYear()} MK Investors. All rights reserved.
           </div>
           <div className="flex gap-6">
             <Link to={ROUTES.HOME} className="hover:text-gold-400 transition-colors duration-200">

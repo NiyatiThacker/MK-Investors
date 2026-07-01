@@ -21,14 +21,14 @@ function Contact() {
 
   const handleCopyPhone1 = (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText('+91 94272 17798');
+    navigator.clipboard.writeText('+91 98245 96906');
     setCopiedPhone1(true);
     setTimeout(() => setCopiedPhone1(false), 2000);
   };
 
   const handleCopyPhone2 = (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText('+91 79907 44040');
+    navigator.clipboard.writeText('+91 98245 96906');
     setCopiedPhone2(true);
     setTimeout(() => setCopiedPhone2(false), 2000);
   };
@@ -130,8 +130,8 @@ function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-green-950 mb-2">Address</h3>
-                  <a href="https://maps.google.com/maps?q=Span%20Trade%20Center,%20Paldi%20Rd,%20Near%20Bony%20Travels,%20Pritam%20Nagar,%20Paldi,%20Ahmedabad,%20Gujarat%20380006" target="_blank" rel="noopener noreferrer" className="text-ink-muted text-sm leading-relaxed hover:text-gold-600 transition-colors">
-                    Span Trade Centre, Paldi Rd, Near Bony Travels, Pritam Nagar, Paldi, Ahmedabad, Gujarat 380006
+                  <a href="https://maps.google.com/maps?q=Murlidhar+marketing,+bhavani+mandir+road,+main+bazar,+madhavpur-362230" target="_blank" rel="noopener noreferrer" className="text-ink-muted text-sm leading-relaxed hover:text-gold-600 transition-colors">
+                    Murlidhar marketing, bhavani mandir road, main bazar, madhavpur - 362230
                   </a>
                 </div>
               </motion.div>
@@ -144,12 +144,8 @@ function Contact() {
                 <div className="flex-grow">
                   <h3 className="font-bold text-green-950 mb-2">Phone</h3>
                   <button onClick={handleCopyPhone1} className="text-ink-muted text-sm mb-1 flex items-center gap-2 hover:text-gold-600 transition-colors w-full text-left">
-                    <span className="whitespace-nowrap">+91 94272 17798</span>
+                    <span className="whitespace-nowrap">+91 98245 96906</span>
                     {copiedPhone1 ? <span className="text-xs text-green-500 font-medium whitespace-nowrap">Copied!</span> : <span className="text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Click to copy</span>}
-                  </button>
-                  <button onClick={handleCopyPhone2} className="text-ink-muted text-sm flex items-center gap-2 hover:text-gold-600 transition-colors w-full text-left">
-                    <span className="whitespace-nowrap">+91 79907 44040</span>
-                    {copiedPhone2 ? <span className="text-xs text-green-500 font-medium whitespace-nowrap">Copied!</span> : <span className="text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Click to copy</span>}
                   </button>
                 </div>
               </motion.div>
@@ -161,7 +157,7 @@ function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-green-950 mb-2">Email</h3>
-                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=prospectssbs@gmail.com" target="_blank" rel="noopener noreferrer" className="text-ink-muted text-sm hover:text-gold-600 transition-colors">prospectssbs@gmail.com</a>
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=manthankakkad50@gmail.com" target="_blank" rel="noopener noreferrer" className="text-ink-muted text-sm hover:text-gold-600 transition-colors">manthankakkad50@gmail.com</a>
                 </div>
               </motion.div>
 
@@ -307,8 +303,8 @@ function Contact() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="bg-white p-4 rounded-2xl shadow-xl border border-gray-100 h-[500px] w-full overflow-hidden">
           <iframe
-            title="SBS Investments Location"
-            src="https://maps.google.com/maps?q=Span%20Trade%20Center,%20Paldi%20Rd,%20Near%20Bony%20Travels,%20Pritam%20Nagar,%20Paldi,%20Ahmedabad,%20Gujarat%20380006&z=16&output=embed"
+            title="MK Investors Location"
+            src="https://maps.google.com/maps?q=Murlidhar+marketing,+bhavani+mandir+road,+main+bazar,+madhavpur-362230&z=16&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0, borderRadius: '0.75rem' }}

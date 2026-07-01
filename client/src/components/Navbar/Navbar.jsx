@@ -4,7 +4,8 @@ import { Menu, X, ChevronDown, PhoneCall } from 'lucide-react';
 import { ROUTES } from '../../constants/routes';
 import { SERVICES } from '../../constants/services';
 import ServicesDropdown from './ServicesDropdown';
-import sbsLogo from '../../assets/sbs_financials_logo-removebg-preview.png';
+// logo image placeholder (currently text-only)
+
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,19 +51,15 @@ function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-350 ${isScrolled
-          ? 'bg-green-950 shadow-navbar py-3 border-b border-gold-400/10'
+          ? 'bg-green-950/85 backdrop-blur-md shadow-navbar py-3 border-b border-gold-400/15'
           : 'bg-transparent py-5'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to={ROUTES.HOME} onClick={(e) => handleLinkClick(ROUTES.HOME, e)} className="flex items-center gap-2 group">
-            <img 
-              src={sbsLogo} 
-              alt="SBS Financials Logo" 
-              className="w-28 md:w-36 h-auto object-contain group-hover:scale-105 transition-transform duration-250"
-            />
+          <Link to={ROUTES.HOME} onClick={(e) => handleLinkClick(ROUTES.HOME, e)} className="flex items-center group">
+            <img src="/images/logo.png" alt="MK Investors Logo" className="h-11 md:h-14 w-auto object-contain transition-transform duration-250 group-hover:scale-105" />
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -162,7 +159,7 @@ function Navbar() {
           }`}
       >
         <div className="flex items-center justify-between mb-8 pb-4 border-b border-gold-400/15">
-          <img src={sbsLogo} alt="SBS Financials Logo" className="w-24 h-auto object-contain" />
+          <img src="/images/logo.png" alt="MK Investors Logo" className="h-12 w-auto object-contain" />
           <button
             onClick={() => setIsMobileMenuOpen(false)}
             className="text-white hover:text-gold-400 focus:outline-none cursor-pointer p-1 rounded-md"

@@ -1,9 +1,9 @@
 export const COLORS = {
-  primaryDarkGreen: '#012604',
-  primaryMidGreen: '#126009',
-  goldAccent: '#EBCC5A',
-  lightGreenTint: '#E8F5E9',
-  goldHover: '#D4AE3A',
-  textDark: '#0D1F0D',
-  textMuted: '#4B5563',
+  primaryDarkGreen: '#1B0634',
+  primaryMidGreen: '#A65B4A',
+  goldAccent: '#DDA16D',
+  lightGreenTint: '#FAF2EB',
+  goldHover: '#C58B55',
+  textDark: '#433A34',
+  textMuted: '#7A7068',
 };
