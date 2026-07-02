@@ -9,21 +9,21 @@ export default {
       // ── Color Palette ──────────────────────────────────────
       colors: {
         green: {
-          950: "#1B0634",    // Primary Deep Midnight Violet (navbar, hero, footer)
-          900: "#2F0B3A",    // Deep Plum (gradients)
-          700: "#A65B4A",    // Primary Copper/Terracotta (buttons, accents)
-          600: "#8F4D3E",    // Deep Copper hover state
-          100: "#FAF2EB",    // Warm Peach Cream (section backgrounds)
-          50:  "#FDF8F5",    // Pearl Cream (inputs, cards)
+          950: "#121212",    // Matte black (navbar, hero, footer)
+          900: "#1C1C1E",    // Dark charcoal
+          700: "#3A3A3C",    // Mid charcoal gray
+          600: "#2C2C2E",    // Dark gray
+          100: "#F2F2F7",    // Light gray card bg
+          50:  "#FAFAFC",    // Warm off-white
         },
         gold: {
-          400: "#DDA16D",    // Primary Sandy Peach (accent, CTA, highlights)
-          600: "#C58B55",    // Muted Peach hover state
+          400: "#FFFFFF",    // Pure white highlight
+          600: "#E5E5EA",    // Subtle silver hover accent
         },
         // Text
         ink: {
-          dark:  "#433A34",  // Warm Charcoal Brown body text
-          muted: "#7A7068",  // Secondary warm gray text
+          dark:  "#1C1C1E",  // Neutral charcoal dark body text
+          muted: "#666666",  // Neutral muted gray text
         },
       },
 

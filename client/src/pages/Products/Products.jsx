@@ -196,12 +196,12 @@ function Products() {
   };
 
   return (
-    <div className="bg-[#120422] pb-24 relative overflow-hidden min-h-screen">
+    <div className="bg-green-950 pb-24 relative overflow-hidden min-h-screen">
       {/* Dynamic Background Floating Shapes */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-100px] right-[-100px] w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-[#ff3998]/10 to-[#ff5f99]/15 blur-[100px] animate-float"></div>
-        <div className="absolute bottom-[-100px] left-[-100px] w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-[#0061ff]/10 to-[#60efff]/15 blur-[100px] animate-float-delayed"></div>
-        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-gradient-to-tr from-[#7700ff]/5 to-[#4400ff]/10 blur-[120px] animate-float-slow"></div>
+        <div className="absolute top-[-100px] right-[-100px] w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-white/5 to-white/10 blur-[100px] animate-float"></div>
+        <div className="absolute bottom-[-100px] left-[-100px] w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-white/5 to-white/8 blur-[100px] animate-float-delayed"></div>
+        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-gradient-to-tr from-white/2 to-white/5 blur-[120px] animate-float-slow"></div>
       </div>
 
       {/* 1. Hero Section */}
@@ -213,10 +213,10 @@ function Products() {
             className="w-full h-full object-cover opacity-65" 
             alt="MK Investors Products Hero Background"
           />
-          {/* Tint overlay matching the Products page deep purple bg */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#120422]/75 via-[#1B0634]/50 to-[#120422]/75 mix-blend-multiply"></div>
+          {/* Tint overlay matching the Products page deep bg */}
+          <div className="absolute inset-0 bg-gradient-to-br from-green-950/85 via-green-900/60 to-green-950/85 mix-blend-multiply"></div>
           {/* Bottom fade out to match the page background */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#120422] via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-green-950 via-transparent to-transparent"></div>
         </div>
 
         <motion.div 

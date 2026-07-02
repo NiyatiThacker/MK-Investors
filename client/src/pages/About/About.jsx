@@ -142,29 +142,29 @@ function About() {
           </motion.div>
           <motion.div variants={itemVariants} className="lg:w-1/2 w-full">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-6 bg-green-50/40 rounded-2xl border border-green-700/10 space-y-3 shadow-sm hover:border-gold-400/40 transition-colors duration-300">
-                <div className="w-10 h-10 rounded-xl bg-gold-400/10 text-gold-600 flex items-center justify-center border border-gold-400/20">
+              <div className="p-6 bg-green-50/40 rounded-2xl border border-green-700/10 space-y-3 shadow-sm hover:border-green-950/40 transition-colors duration-300">
+                <div className="w-10 h-10 rounded-xl bg-green-950/5 text-green-950 flex items-center justify-center border border-green-950/10">
                   <Icons.Compass size={20} />
                 </div>
                 <h4 className="font-bold text-green-950 text-base tracking-tight">Goal-Oriented Advice</h4>
                 <p className="text-ink-muted text-xs leading-relaxed">Portfolios tailored precisely to match child education, retirement, and family security timelines.</p>
               </div>
-              <div className="p-6 bg-green-50/40 rounded-2xl border border-green-700/10 space-y-3 shadow-sm hover:border-gold-400/40 transition-colors duration-300">
-                <div className="w-10 h-10 rounded-xl bg-gold-400/10 text-gold-600 flex items-center justify-center border border-gold-400/20">
+              <div className="p-6 bg-green-50/40 rounded-2xl border border-green-700/10 space-y-3 shadow-sm hover:border-green-950/40 transition-colors duration-300">
+                <div className="w-10 h-10 rounded-xl bg-green-950/5 text-green-950 flex items-center justify-center border border-green-950/10">
                   <Icons.TrendingUp size={20} />
                 </div>
                 <h4 className="font-bold text-green-950 text-base tracking-tight">Balanced Allocation</h4>
                 <p className="text-ink-muted text-xs leading-relaxed">Strategic diversification across equities, debt, gold, and fixed-income to hedge against inflation.</p>
               </div>
-              <div className="p-6 bg-green-50/40 rounded-2xl border border-green-700/10 space-y-3 shadow-sm hover:border-gold-400/40 transition-colors duration-300">
-                <div className="w-10 h-10 rounded-xl bg-gold-400/10 text-gold-600 flex items-center justify-center border border-gold-400/20">
+              <div className="p-6 bg-green-50/40 rounded-2xl border border-green-700/10 space-y-3 shadow-sm hover:border-green-950/40 transition-colors duration-300">
+                <div className="w-10 h-10 rounded-xl bg-green-950/5 text-green-950 flex items-center justify-center border border-green-950/10">
                   <Icons.Activity size={20} />
                 </div>
                 <h4 className="font-bold text-green-950 text-base tracking-tight">Active Rebalancing</h4>
                 <p className="text-ink-muted text-xs leading-relaxed">Continuous assessment and adjustment of portfolio holdings to lock in gains and limit downsides.</p>
               </div>
-              <div className="p-6 bg-green-50/40 rounded-2xl border border-green-700/10 space-y-3 shadow-sm hover:border-gold-400/40 transition-colors duration-300">
-                <div className="w-10 h-10 rounded-xl bg-gold-400/10 text-gold-600 flex items-center justify-center border border-gold-400/20">
+              <div className="p-6 bg-green-50/40 rounded-2xl border border-green-700/10 space-y-3 shadow-sm hover:border-green-950/40 transition-colors duration-300">
+                <div className="w-10 h-10 rounded-xl bg-green-950/5 text-green-950 flex items-center justify-center border border-green-950/10">
                   <Icons.Layers size={20} />
                 </div>
                 <h4 className="font-bold text-green-950 text-base tracking-tight">Tax Shielding</h4>
@@ -174,7 +174,7 @@ function About() {
           </motion.div>
         </motion.div>
       </section>      {/* 3. Founder Section */}
-      <section className="section-pad bg-gradient-to-br from-[#120422] to-[#1B0634] text-white relative overflow-hidden">
+      <section className="section-pad bg-gradient-to-br from-green-950 to-green-900 text-white relative overflow-hidden">
         {/* Subtle blur highlights */}
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gold-400/5 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-green-700/5 rounded-full blur-[100px] pointer-events-none"></div>
@@ -184,7 +184,7 @@ function About() {
             
             {/* Left: Founder Card Frame */}
             <div className="lg:col-span-5 flex flex-col items-center">
-              <div className="relative w-full max-w-[320px] aspect-[4/5] rounded-2xl overflow-hidden border border-gold-400/30 bg-[#120422]/60 shadow-xl">
+              <div className="relative w-full max-w-[320px] aspect-[4/5] rounded-2xl overflow-hidden border border-gold-400/30 bg-green-950/60 shadow-xl">
                 {/* Gold frame decorations */}
                 <div className="absolute inset-2 border border-gold-400/10 rounded-xl pointer-events-none"></div>
                 
@@ -278,7 +278,7 @@ function About() {
       </section>
 
       {/* 5. Core Values */}
-      <section className="section-pad bg-[#120422] text-white relative overflow-hidden">
+      <section className="section-pad bg-green-950 text-white relative overflow-hidden">
         {/* Subtle background glow blob */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 rounded-full bg-gold-400/5 blur-[120px]"></div>
@@ -331,11 +331,11 @@ function About() {
           
           {/* Personal Commitment */}
           <div className="max-w-3xl mx-auto">
-            <div className="bg-[#120422]/5 p-8 md:p-10 rounded-2xl border border-green-700/10 text-center relative overflow-hidden">
+            <div className="bg-green-900/10 p-8 md:p-10 rounded-2xl border border-green-700/10 text-center relative overflow-hidden">
               {/* Background decoration */}
               <div className="absolute -top-10 -right-10 w-24 h-24 bg-gold-400/5 rounded-full blur-xl"></div>
               
-              <div className="w-12 h-12 rounded-full bg-gold-400/10 text-gold-600 flex items-center justify-center border border-gold-400/20 mx-auto mb-6">
+              <div className="w-12 h-12 rounded-full bg-green-950/5 text-green-950 flex items-center justify-center border border-green-950/10 mx-auto mb-6">
                 <Icons.ShieldCheck size={24} />
               </div>
               <h3 className="text-xl font-bold text-green-950 mb-4 tracking-tight">My Personal Commitment</h3>
@@ -403,11 +403,11 @@ function About() {
             ].map((s, i) => (
               <div key={i} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
                 {/* Step Circle */}
-                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-gold-400 text-white font-bold text-lg shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-green-950 text-white font-bold text-lg shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                   {s.step}
                 </div>
                 {/* Content Card */}
-                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-white rounded-card border border-green-700/10 shadow-sm hover:shadow-md hover:border-gold-400 transition-all duration-300 overflow-hidden group/card">
+                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-white rounded-card border border-green-700/10 shadow-sm hover:shadow-md hover:border-green-700 transition-all duration-300 overflow-hidden group/card">
                   <div className="w-full aspect-video bg-green-50 flex items-center justify-center border-b border-green-700/10 relative overflow-hidden">
                      <img src={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" />
                      <div className="absolute inset-0 bg-gradient-to-t from-green-950/60 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>

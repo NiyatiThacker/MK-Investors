@@ -67,7 +67,7 @@ function App() {
             <Suspense fallback={<PageLoader />}>
               <Routes>
                 <Route path={ROUTES.HOME} element={<Home />} />
-                
+
                 {/* Main Pages */}
                 <Route path={ROUTES.ABOUT} element={<About />} />
                 <Route path={ROUTES.SERVICES} element={<Services />} />
@@ -92,10 +92,10 @@ function App() {
                 {!isChatOpen && showTooltip && (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                    animate={{ 
-                      opacity: 1, 
-                      scale: 1, 
-                      y: [0, -4, 0] 
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                      y: [0, -4, 0]
                     }}
                     exit={{ opacity: 0, scale: 0.8, y: 10 }}
                     transition={{
@@ -110,7 +110,7 @@ function App() {
                     style={{ transformOrigin: "bottom right" }}
                   >
                     {/* Close button */}
-                    <button 
+                    <button
                       onClick={() => setShowTooltip(false)}
                       className="absolute top-2.5 right-2.5 text-slate-400 hover:text-white transition-colors"
                     >
@@ -123,14 +123,14 @@ function App() {
                     <p className="text-slate-200 text-xs pr-2 leading-normal">
                       Need financial advice? Ask me about SIP, Mutual Funds, or Loans! 📈
                     </p>
-                    
-                     {/* Tooltip Arrow pointing down */}
+
+                    {/* Tooltip Arrow pointing down */}
                     <div className="absolute right-6 -bottom-1.5 w-3 h-3 bg-[#0f172a] border-r border-b border-slate-700 rotate-45" />
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
-            
+
             <div className="mt-4 pointer-events-auto">
               <FloatingButton isOpen={isChatOpen} toggle={toggleChat} />
             </div>

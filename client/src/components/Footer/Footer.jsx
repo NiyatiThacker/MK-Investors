@@ -107,7 +107,7 @@ function Footer() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }
             }} className="flex items-center gap-2 group self-start">
-              <img src="/images/logo.png" alt="MK Investors Logo" className="h-16 w-auto object-contain transition-transform duration-250 group-hover:scale-105" />
+              <img src="/images/logo.png" alt="MK Investors Logo" className="h-32 md:h-48 w-auto object-contain transition-transform duration-250 group-hover:scale-105" />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed">
               MK Investors is a premier financial advisory service dedicated to simplifying financial planning, wealth generation, strategic investments, and reliable insurance planning.

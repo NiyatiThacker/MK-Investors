@@ -3,20 +3,23 @@
 
 /* ── CSS Custom Properties ────────────────────────────── */
 :root {
-  --color-green-950: #1B0634;
-  --color-green-900: #2F0B3A;
-  --color-green-700: #A65B4A;
-  --color-green-600: #8F4D3E;
-  --color-green-100: #FAF2EB;
-  --color-green-50:  #FDF8F5;
-  --color-gold-400:  #DDA16D;
-  --color-gold-600:  #C58B55;
-  --font-playfair:    "Playfair Display", Georgia, serif;
-  --font-inter:       "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --color-green-950: #121212;
+  --color-green-900: #1C1C1E;
+  --color-green-700: #3A3A3C;
+  --color-green-600: #2C2C2E;
+  --color-green-100: #F2F2F7;
+  --color-green-50: #FAFAFC;
+  --color-gold-400: #FFFFFF;
+  --color-gold-600: #E5E5EA;
+  --font-playfair: "Playfair Display", Georgia, serif;
+  --font-inter: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-asap: "Asap", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 /* ── Base Resets ──────────────────────────────────────── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -27,7 +30,7 @@ html {
 
 body {
   font-family: var(--font-inter);
-  color: #433A34;
+  color: var(--color-green-950);
   background-color: #FAFAFA;
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
@@ -35,18 +38,24 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, .section-title {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.section-title {
   font-family: var(--font-playfair);
 }
 
 /* ── Reusable Tailwind Component Shortcuts ────────────── */
 @layer components {
+
   /* Primary CTA button — gold fill */
   .btn-primary {
-    @apply bg-gold-400 text-green-950
-           font-semibold px-6 py-3 rounded-lg
-           transition-colors duration-250 cursor-pointer;
+    @apply bg-gold-400 text-green-950 font-semibold px-6 py-3 rounded-lg transition-colors duration-250 cursor-pointer;
   }
+
   @media (hover: hover) {
     .btn-primary:hover {
       @apply bg-gold-600;
@@ -55,10 +64,9 @@ h1, h2, h3, h4, h5, h6, .section-title {
 
   /* Secondary button — green outline */
   .btn-outline {
-    @apply border-2 border-green-700 text-green-700
-           font-semibold px-6 py-3 rounded-lg
-           transition-all duration-250 cursor-pointer;
+    @apply border-2 border-green-700 text-green-700 font-semibold px-6 py-3 rounded-lg transition-all duration-250 cursor-pointer;
   }
+
   @media (hover: hover) {
     .btn-outline:hover {
       @apply bg-green-700 text-white;
@@ -67,10 +75,9 @@ h1, h2, h3, h4, h5, h6, .section-title {
 
   /* Ghost button — gold outline for dark backgrounds */
   .btn-ghost-gold {
-    @apply border-2 border-gold-400 text-gold-400
-           font-semibold px-6 py-3 rounded-lg
-           transition-all duration-250 cursor-pointer;
+    @apply border-2 border-gold-400 text-gold-400 font-semibold px-6 py-3 rounded-lg transition-all duration-250 cursor-pointer;
   }
+
   @media (hover: hover) {
     .btn-ghost-gold:hover {
       @apply bg-gold-400 text-green-950;
@@ -87,28 +94,49 @@ h1, h2, h3, h4, h5, h6, .section-title {
     @apply text-h2 text-green-950 font-bold mb-3;
   }
 
-  /* Gold underline accent under headings */
+  /* Grayscale underline accent under headings */
   .section-title-accent::after {
     content: '';
-    @apply block w-16 h-1 bg-gold-400 mt-3 rounded-full;
+    @apply block w-16 h-1 bg-green-950 mt-3 rounded-full;
+  }
+
+  .text-white.section-title-accent::after,
+  .text-white .section-title-accent::after {
+    @apply bg-white;
   }
 
   /* Service/Product card base */
   .card {
-    @apply bg-white rounded-card shadow-card
-           transition-all duration-350 p-6;
+    @apply bg-white rounded-card shadow-card transition-all duration-350 p-6;
   }
+
   @media (hover: hover) {
     .card:hover {
       @apply shadow-card-hover -translate-y-1;
+    }
+  }
+
+  /* Custom Navbar CTA Button with Slide-Fill Animation */
+  .btn-nav-cta {
+    @apply border border-gold-400 text-gold-400 bg-transparent font-semibold px-5 py-2.5 rounded-full shadow-[inset_0_0_0_0_#FFFFFF] transition-all duration-500 ease-out cursor-pointer;
+  }
+
+  @media (hover: hover) {
+    .btn-nav-cta:hover {
+      @apply shadow-[inset_0_-60px_0_0_#FFFFFF] text-green-950;
     }
   }
 }
 
 /* ── Custom Animations ────────────────────────────────── */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {
@@ -123,9 +151,10 @@ h1, h2, h3, h4, h5, h6, .section-title {
 /* ── Scroll Snapping Horizontal List (What We Offer) ───── */
 .bg-grid-pattern {
   --size: 40px;
-  --line: rgba(221, 161, 109, 0.12); /* gold accent lines */
+  --line: rgba(221, 161, 109, 0.12);
+  /* gold accent lines */
   background: linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
-              linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
+    linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
   mask: radial-gradient(circle at center, white, transparent 80%);
 }
 
@@ -137,11 +166,14 @@ h1, h2, h3, h4, h5, h6, .section-title {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding: 3rem calc(50vw - (var(--card-size, 280px) / 2));
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+  /* Hide scrollbar for Firefox */
   -webkit-overflow-scrolling: touch;
 }
+
 .scroll-snap-x::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Safari/Chrome */
+  display: none;
+  /* Hide scrollbar for Safari/Chrome */
 }
 
 .scroll-snap-item {
@@ -156,12 +188,13 @@ h1, h2, h3, h4, h5, h6, .section-title {
   overflow: hidden;
   border-radius: 1.5rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  background-color: #2F0B3A; /* Deep Plum background */
+  background-color: var(--color-green-900);
+  /* Deep Plum background */
   transform: scale(0.92);
   filter: grayscale(0.8) brightness(0.65);
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              filter 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    filter 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .service-scroll-card::before {
@@ -202,6 +235,7 @@ h1, h2, h3, h4, h5, h6, .section-title {
 :root {
   --card-size: 280px;
 }
+
 @media (min-width: 768px) {
   :root {
     --card-size: 320px;
@@ -213,15 +247,15 @@ h1, h2, h3, h4, h5, h6, .section-title {
   clip-path: inset(0 0 0 0);
 }
 
-.service-card-reveal > span {
+.service-card-reveal>span {
   display: inline-block;
   translate: 0 100%;
   opacity: 0;
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.service-scroll-card-active .service-card-reveal > span {
+.service-scroll-card-active .service-card-reveal>span {
   translate: 0 0;
   opacity: 1;
 }
@@ -231,10 +265,12 @@ h1, h2, h3, h4, h5, h6, .section-title {
   position: relative;
   overflow: hidden;
   border-radius: 1.5rem;
-  height: 400px; /* 400px height for all devices to guarantee text space */
+  height: 400px;
+  /* 400px height for all devices to guarantee text space */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  background-color: #1B0634; /* Dark violet base */
-  border: 1px solid rgba(221, 161, 109, 0.1);
+  background-color: var(--color-green-950);
+  /* Dark charcoal base */
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .product-card-image-wrap {
@@ -260,16 +296,25 @@ h1, h2, h3, h4, h5, h6, .section-title {
   background-color: #FFFFFF;
   padding: 1.5rem;
   transform: translateY(100%);
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 20;
   border-radius: 1.25rem 1.25rem 0 0;
-  border-top: 1px solid rgba(221, 161, 109, 0.15);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .product-card-title-overlay {
   opacity: 1;
-  transition: opacity 0.3s ease;
-  pointer-events: none; /* Let clicks pass through to container */
+  pointer-events: none;
+  /* Let clicks pass through to container */
+}
+
+@media (hover: hover) {
+  .product-card-content {
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .product-card-title-overlay {
+    transition: opacity 0.3s ease;
+  }
 }
 
 /* Hover effects for Desktop (hover support only) */
@@ -279,11 +324,11 @@ h1, h2, h3, h4, h5, h6, .section-title {
   }
 
   .product-hover-card:hover .product-card-content {
-    transform: translateY(0);
+    transform: translateY(0) !important;
   }
 
   .product-hover-card:hover .product-card-title-overlay {
-    opacity: 0;
+    opacity: 0 !important;
   }
 }
 
@@ -291,17 +336,17 @@ h1, h2, h3, h4, h5, h6, .section-title {
   position: relative;
   width: 100%;
   height: 520px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%), 
-              rgba(47, 11, 58, 0.55);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%),
+    rgba(28, 28, 30, 0.55);
   border-radius: 20px;
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   overflow: hidden;
-  border: 1px solid rgba(221, 161, 109, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-top-color: rgba(255, 255, 255, 0.35);
   border-left-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 
-              inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
   transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
   transform-style: preserve-3d;
   will-change: transform;
@@ -414,7 +459,7 @@ h1, h2, h3, h4, h5, h6, .section-title {
 .glass-value {
   font-size: 1.15rem;
   font-weight: 700;
-  background: linear-gradient(90deg, #DDA16D, #A65B4A);
+  background: linear-gradient(90deg, #FFFFFF, #B0B0B0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -459,6 +504,7 @@ h1, h2, h3, h4, h5, h6, .section-title {
   0% {
     transform: translateY(0) translateX(0) scale(1);
   }
+
   100% {
     transform: translateY(-30px) translateX(15px) scale(1.05);
   }
@@ -483,11 +529,11 @@ h1, h2, h3, h4, h5, h6, .section-title {
   .glass-product-card {
     height: auto;
   }
-  
+
   .glass-card-image {
     height: 180px;
   }
-  
+
   .glass-card-text {
     margin-bottom: 15px;
   }
@@ -498,27 +544,27 @@ h1, h2, h3, h4, h5, h6, .section-title {
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #FFFFFF 0%, #FAFAF7 100%);
-  border: 1px solid rgba(221, 161, 109, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
   padding: 2.25rem 2rem;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
-              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  box-shadow: 0 4px 20px rgba(27, 6, 52, 0.02);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
 @media (hover: hover) {
   .premium-why-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(221, 161, 109, 0.5);
-    box-shadow: 0 20px 40px rgba(221, 161, 109, 0.08), 
-                0 1px 0 rgba(221, 161, 109, 0.15);
+    border-color: rgba(28, 28, 30, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05),
+      0 1px 0 rgba(0, 0, 0, 0.08);
   }
-  
+
   .premium-why-card:hover .why-card-icon-wrap {
     transform: scale(1.05);
-    background-color: rgba(221, 161, 109, 0.15);
-    border-color: rgba(221, 161, 109, 0.35);
+    background-color: rgba(28, 28, 30, 0.08);
+    border-color: rgba(28, 28, 30, 0.2);
   }
 
   .premium-why-card:hover .why-card-number {
@@ -533,12 +579,12 @@ h1, h2, h3, h4, h5, h6, .section-title {
   right: 1.5rem;
   font-size: 5.5rem;
   font-weight: 800;
-  color: #DDA16D;
+  color: var(--color-gold-400);
   opacity: 0.05;
   user-select: none;
   font-family: 'Playfair Display', serif, Georgia;
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   pointer-events: none;
   line-height: 1;
 }
@@ -550,9 +596,9 @@ h1, h2, h3, h4, h5, h6, .section-title {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 1rem;
-  background-color: rgba(221, 161, 109, 0.08);
-  border: 1px solid rgba(221, 161, 109, 0.2);
-  color: #B28350;
+  background-color: rgba(28, 28, 30, 0.04);
+  border: 1px solid rgba(28, 28, 30, 0.08);
+  color: var(--color-green-950);
   margin-bottom: 1.75rem;
   transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
@@ -564,9 +610,9 @@ h1, h2, h3, h4, h5, h6, .section-title {
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 9999px;
-  background: rgba(221, 161, 109, 0.06);
-  border: 1px solid rgba(221, 161, 109, 0.15);
-  color: #B28350;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 600;
   font-size: 0.875rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
@@ -579,14 +625,14 @@ h1, h2, h3, h4, h5, h6, .section-title {
   border-radius: 1.5rem;
   padding: 2.5rem 2rem;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%),
-              rgba(18, 4, 34, 0.6);
+    rgba(28, 28, 30, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .glass-value-card::before {
@@ -604,20 +650,20 @@ h1, h2, h3, h4, h5, h6, .section-title {
 @media (hover: hover) {
   .glass-value-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(221, 161, 109, 0.35);
-    box-shadow: 0 20px 40px rgba(221, 161, 109, 0.05),
-                0 4px 24px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.05),
+      0 4px 24px rgba(0, 0, 0, 0.4);
   }
-  
+
   .glass-value-card:hover::before {
     opacity: 1;
   }
-  
+
   .glass-value-card:hover .glass-value-icon {
     transform: scale(1.1) rotate(5deg);
-    background-color: rgba(221, 161, 109, 0.2);
-    color: #F3C68F;
-    box-shadow: 0 0 20px rgba(221, 161, 109, 0.25);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
   }
 }
 
@@ -630,12 +676,12 @@ h1, h2, h3, h4, h5, h6, .section-title {
   border-radius: 1.25rem;
   background-color: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #DDA16D;
+  color: #FFFFFF;
   margin-bottom: 2rem;
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              background-color 0.4s ease,
-              color 0.4s ease,
-              box-shadow 0.4s ease;
+    background-color 0.4s ease,
+    color 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 /* Light Theme Outline Cards (About Page Why Choose Us) */
@@ -647,8 +693,8 @@ h1, h2, h3, h4, h5, h6, .section-title {
   padding: 2.25rem 2rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .premium-outline-card-icon {
@@ -658,8 +704,8 @@ h1, h2, h3, h4, h5, h6, .section-title {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 1rem;
-  background-color: rgba(27, 6, 52, 0.03);
-  color: #1B0634;
+  background-color: rgba(28, 28, 30, 0.03);
+  color: var(--color-green-950);
   margin-bottom: 1.5rem;
   transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
@@ -667,19 +713,71 @@ h1, h2, h3, h4, h5, h6, .section-title {
 @media (hover: hover) {
   .premium-outline-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(221, 161, 109, 0.4);
-    box-shadow: 0 16px 32px rgba(221, 161, 109, 0.06);
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.06);
   }
-  
+
   .premium-outline-card:hover .premium-outline-card-icon {
     transform: scale(1.05);
-    background-color: rgba(221, 161, 109, 0.15);
-    color: #B28350;
+    background-color: rgba(0, 0, 0, 0.08);
+    color: var(--color-green-950);
   }
 }
 
 .bg-soft-purple {
-  background-color: #F5F3F8;
+  background-color: var(--color-green-50);
 }
 
+/* ── Custom Finance Navbar Animations ───────────────────── */
+@keyframes coinFlip {
+  0% {
+    transform: rotateY(0deg) scale(1);
+  }
 
+  50% {
+    transform: rotateY(180deg) scale(1.05);
+  }
+
+  100% {
+    transform: rotateY(360deg) scale(1);
+  }
+}
+
+.animate-coin-flip {
+  animation: coinFlip 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transform-style: preserve-3d;
+}
+
+/* Horizontal Track Travel Animation */
+@keyframes travelHorizontal {
+  0% {
+    transform: translate3d(-60px, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.animate-horizontal-travel {
+  animation: travelHorizontal 25s linear infinite;
+  will-change: transform;
+}
+
+/* Vertical Bobbing & Rotational Oscillation */
+@keyframes bobVertical {
+
+  0%,
+  100% {
+    transform: translate3d(0, -3px, 0) rotate(-5deg);
+  }
+
+  50% {
+    transform: translate3d(0, 3px, 0) rotate(5deg);
+  }
+}
+
+.animate-vertical-bob {
+  animation: bobVertical 4s ease-in-out infinite;
+  will-change: transform;
+}

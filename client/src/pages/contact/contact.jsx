@@ -130,7 +130,7 @@ function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-green-950 mb-2">Address</h3>
-                  <a href="https://maps.google.com/maps?q=Murlidhar+marketing,+bhavani+mandir+road,+main+bazar,+madhavpur-362230" target="_blank" rel="noopener noreferrer" className="text-ink-muted text-sm leading-relaxed hover:text-gold-600 transition-colors">
+                  <a href="https://maps.google.com/maps?q=Murlidhar+marketing,+bhavani+mandir+road,+main+bazar,+madhavpur-362230" target="_blank" rel="noopener noreferrer" className="text-ink-muted text-sm leading-relaxed hover:text-green-950 transition-colors">
                     Murlidhar marketing, bhavani mandir road, main bazar, madhavpur - 362230
                   </a>
                 </div>
@@ -143,7 +143,7 @@ function Contact() {
                 </div>
                 <div className="flex-grow">
                   <h3 className="font-bold text-green-950 mb-2">Phone</h3>
-                  <button onClick={handleCopyPhone1} className="text-ink-muted text-sm mb-1 flex items-center gap-2 hover:text-gold-600 transition-colors w-full text-left">
+                  <button onClick={handleCopyPhone1} className="text-ink-muted text-sm mb-1 flex items-center gap-2 hover:text-green-950 transition-colors w-full text-left">
                     <span className="whitespace-nowrap">+91 98245 96906</span>
                     {copiedPhone1 ? <span className="text-xs text-green-500 font-medium whitespace-nowrap">Copied!</span> : <span className="text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Click to copy</span>}
                   </button>
@@ -157,7 +157,7 @@ function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-green-950 mb-2">Email</h3>
-                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=manthankakkad50@gmail.com" target="_blank" rel="noopener noreferrer" className="text-ink-muted text-sm hover:text-gold-600 transition-colors">manthankakkad50@gmail.com</a>
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=manthankakkad50@gmail.com" target="_blank" rel="noopener noreferrer" className="text-ink-muted text-sm hover:text-green-950 transition-colors">manthankakkad50@gmail.com</a>
                 </div>
               </motion.div>
 

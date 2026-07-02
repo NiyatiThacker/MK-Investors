@@ -567,8 +567,8 @@ function Calculator() {
                       labelFormatter={(label) => `Year ${label}`}
                       contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                     />
-                    {!isEmi && <Line type="monotone" dataKey="total" stroke="#DDA16D" strokeWidth={3} dot={false} activeDot={{ r: 6 }} name="Total Value" />}
-                    <Line type="monotone" dataKey="invested" stroke="#A65B4A" strokeWidth={3} dot={false} activeDot={{ r: 6 }} name={isEmi ? "Remaining Balance" : "Invested Amount"} />
+                    {!isEmi && <Line type="monotone" dataKey="total" stroke="#1C1C1E" strokeWidth={3} dot={false} activeDot={{ r: 6 }} name="Total Value" />}
+                    <Line type="monotone" dataKey="invested" stroke="#8E8E93" strokeWidth={3} dot={false} activeDot={{ r: 6 }} name={isEmi ? "Remaining Balance" : "Invested Amount"} />
                   </LineChart>
                 </ResponsiveContainer>
               </div>

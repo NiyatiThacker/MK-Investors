@@ -14,3 +14,4 @@ client/dist/
 # Secrets
 chatbot-backend/.env
 .env
+database/*.json
