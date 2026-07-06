@@ -27,23 +27,7 @@ function LinkedinIcon({ size = 16, className = '' }) {
   );
 }
 
-function FacebookIcon({ size = 16, className = '' }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-    >
-      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-    </svg>
-  );
-}
+
 
 function InstagramIcon({ size = 16, className = '' }) {
   return (
@@ -65,24 +49,7 @@ function InstagramIcon({ size = 16, className = '' }) {
   );
 }
 
-function YoutubeIcon({ size = 16, className = '' }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-    >
-      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-    </svg>
-  );
-}
+
 
 function Footer() {
   const [copied, setCopied] = useState(false);
@@ -107,7 +74,7 @@ function Footer() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }
             }} className="flex items-center gap-2 group self-start">
-              <img src="/images/logo.png" alt="MK Investors Logo" className="h-32 md:h-48 w-auto object-contain transition-transform duration-250 group-hover:scale-105" />
+              <img src="/images/logo.png" alt="MK Investors Logo" className="h-40 md:h-50 w-auto object-contain transition-transform duration-250 group-hover:scale-105" />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed">
               MK Investors is a premier financial advisory service dedicated to simplifying financial planning, wealth generation, strategic investments, and reliable insurance planning.
@@ -115,7 +82,7 @@ function Footer() {
             {/* Social Icons */}
             <div className="flex items-center gap-4">
               <a
-                href="https://www.linkedin.com/company/sbs-financials/"
+                href="https://www.linkedin.com/in/kakkad-manthan13"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="h-9 w-9 rounded-full bg-green-700/20 hover:bg-gold-400 hover:text-green-950 flex items-center justify-center text-gold-400 transition-all duration-250 border border-gold-400/10"
@@ -124,40 +91,13 @@ function Footer() {
                 <LinkedinIcon size={16} />
               </a>
               <a
-                href="https://www.facebook.com/share/1ETodRg3J2/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-9 w-9 rounded-full bg-green-700/20 hover:bg-gold-400 hover:text-green-950 flex items-center justify-center text-gold-400 transition-all duration-250 border border-gold-400/10"
-                aria-label="Facebook"
-              >
-                <FacebookIcon size={16} />
-              </a>
-              <a
-                href="https://www.instagram.com/sbsfinancial?igsh=MW01ZG9pM29obW0xbg=="
+                href="https://www.instagram.com/manthankakkad13?igsh=Nmg4aWo5cjZyOHZh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="h-9 w-9 rounded-full bg-green-700/20 hover:bg-gold-400 hover:text-green-950 flex items-center justify-center text-gold-400 transition-all duration-250 border border-gold-400/10"
                 aria-label="Instagram"
               >
                 <InstagramIcon size={16} />
-              </a>
-              <a
-                href="https://x.com/services5272"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-9 w-9 rounded-full bg-green-700/20 hover:bg-gold-400 hover:text-green-950 flex items-center justify-center text-gold-400 transition-all duration-250 border border-gold-400/10 font-bold text-xs"
-                aria-label="Twitter (X)"
-              >
-                𝕏
-              </a>
-              <a
-                href="https://youtube.com/@sbsfinancials?si=dKQ9457BVXpHwCHK"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-9 w-9 rounded-full bg-green-700/20 hover:bg-gold-400 hover:text-green-950 flex items-center justify-center text-gold-400 transition-all duration-250 border border-gold-400/10"
-                aria-label="YouTube"
-              >
-                <YoutubeIcon size={16} />
               </a>
             </div>
           </div>
