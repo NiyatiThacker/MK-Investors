@@ -219,8 +219,9 @@ function Footer() {
       {/* Bottom Copyright Bar */}
       <div className="border-t border-gold-400/10 py-6 bg-green-950/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
-          <div>
-            &copy; {new Date().getFullYear()} MK Investors. All rights reserved.
+          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1">
+            <span>&copy; {new Date().getFullYear()} MK Investors. All rights reserved.</span>
+            <span className="text-xs text-gray-500 mt-1">Managed by SBS Quantum</span>
           </div>
           <div className="flex gap-6">
             <Link to={ROUTES.HOME} className="hover:text-gold-400 transition-colors duration-200">

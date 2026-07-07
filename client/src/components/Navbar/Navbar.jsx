@@ -333,8 +333,8 @@ function Navbar() {
                     >
                       <button
                         className={`relative z-10 flex items-center gap-1 text-sm font-semibold tracking-wide transition-all duration-300 focus:outline-none cursor-pointer px-4 py-1.5 ${isFocused
-                            ? 'text-gold-400 scale-[1.04] drop-shadow-[0_0_8px_rgba(221,161,109,0.45)]'
-                            : 'text-white/70 hover:text-white'
+                          ? 'text-gold-400 scale-[1.04] drop-shadow-[0_0_8px_rgba(221,161,109,0.45)]'
+                          : 'text-white/70 hover:text-white'
                           }`}
                       >
                         <span>Services</span>
@@ -360,8 +360,8 @@ function Navbar() {
                       to={item.path}
                       onClick={(e) => handleLinkClick(item.path, e)}
                       className={`relative z-10 block text-sm font-semibold tracking-wide transition-all duration-300 px-4 py-1.5 ${isFocused
-                          ? 'text-gold-400 scale-[1.04] drop-shadow-[0_0_8px_rgba(221,161,109,0.45)]'
-                          : 'text-white/70 hover:text-white'
+                        ? 'text-gold-400 scale-[1.04] drop-shadow-[0_0_8px_rgba(221,161,109,0.45)]'
+                        : 'text-white/70 hover:text-white'
                         }`}
                     >
                       {item.name}
@@ -406,7 +406,7 @@ function Navbar() {
             }`}
         >
           <div className="flex items-center justify-between mb-8 pb-4 border-b border-gold-400/15">
-             <img src="/images/logo.png" alt="MK Investors Logo" className="h-18 w-auto object-contain" />
+            <img src="/images/logo.png" alt="MK Investors Logo" className="h-18 w-auto object-contain" />
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="text-white hover:text-gold-400 focus:outline-none cursor-pointer p-1 rounded-md"

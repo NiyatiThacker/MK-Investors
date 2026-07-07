@@ -158,7 +158,7 @@ function HeroSection() {
   return (
     <section className="relative h-[100vh] min-h-[640px] w-full bg-black select-none overflow-hidden">
       {/* ─── BASE: BLACK PANEL (always present in background) ─── */}
-      <div 
+      <div
         className="absolute inset-0 w-full h-full bg-black text-white flex items-center cursor-pointer"
         onClick={handleToggleReveal}
         onMouseEnter={() => setIsHovered(true)}
@@ -279,7 +279,7 @@ function HeroSection() {
       </div>
 
       {/* ─── OVERLAY: WHITE PANEL (slides up from bottom on click) ─── */}
-      <motion.div 
+      <motion.div
         className="absolute top-[80px] left-0 right-0 bottom-0 h-[calc(100%-80px)] w-full bg-white text-gray-800 flex flex-col items-center justify-center cursor-pointer px-6 z-25"
         initial={{ y: '100%' }}
         animate={{ y: isRevealed ? '0%' : '100%' }}
@@ -419,24 +419,24 @@ function Home() {
           if (nextIndex >= SERVICES.length) {
             nextIndex = 0;
           }
-          
+
           const cardWidth = container.querySelector('.scroll-snap-item')?.clientWidth || 320;
           const gap = 16;
-          
+
           container.scrollTo({
             left: nextIndex * (cardWidth + gap),
             behavior: 'smooth'
           });
-          
+
           return nextIndex;
         });
-      }, 3500); // Scroll every 3.5 seconds
+      }, 2500); // Scroll every 2.5 seconds
     };
 
     startAutoScroll();
 
     const pauseScroll = () => clearInterval(scrollInterval);
-    
+
     container.addEventListener('mouseenter', pauseScroll);
     container.addEventListener('mouseleave', startAutoScroll);
     container.addEventListener('touchstart', pauseScroll, { passive: true });
@@ -659,11 +659,11 @@ function Home() {
             {featuredProducts.map((product, idx) => {
               const IconComponent = Icons[product.icon] || Icons.TrendingUp;
               const productImage = `/images/products/${product.id}.jpg`;
-              
+
               const cardVariants = {
                 hidden: { opacity: 0, y: 30 },
-                visible: { 
-                  opacity: 1, 
+                visible: {
+                  opacity: 1,
                   y: 0,
                   transition: { duration: 0.5, delay: idx * 0.1 }
                 }
@@ -671,7 +671,7 @@ function Home() {
 
               const titleVariants = {
                 hidden: { opacity: 1 },
-                visible: { 
+                visible: {
                   opacity: isTouch ? 0 : 1,
                   transition: { duration: 0.4, ease: "easeOut", delay: idx * 0.1 }
                 }
@@ -679,7 +679,7 @@ function Home() {
 
               const contentVariants = {
                 hidden: { y: "100%" },
-                visible: { 
+                visible: {
                   y: isTouch ? 0 : "100%",
                   transition: { duration: 0.5, ease: "easeOut", delay: idx * 0.1 }
                 }

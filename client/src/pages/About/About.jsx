@@ -142,7 +142,7 @@ function About() {
           <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-gold-400 blur-3xl transform -translate-x-1/3 translate-y-1/3"></div>
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -165,7 +165,7 @@ function About() {
 
       {/* 2. Company Story */}
       <section className="section-pad bg-soft-purple">
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -222,16 +222,16 @@ function About() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left: Founder Card Frame */}
             <div className="lg:col-span-5 flex flex-col items-center">
               <div className="relative w-full max-w-[320px] aspect-[4/5] rounded-2xl overflow-hidden border border-gold-400/30 bg-green-950/60 shadow-xl">
                 {/* Gold frame decorations */}
                 <div className="absolute inset-2 border border-gold-400/10 rounded-xl pointer-events-none"></div>
-                
+
                 {/* Subtle internal grid decoration */}
                 <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
-                
+
                 {/* Premium executive portrait placeholder */}
                 <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center space-y-4">
                   <div className="p-4 rounded-full bg-gold-400/10 border border-gold-400/20 text-gold-400 shadow-inner">
@@ -254,8 +254,8 @@ function About() {
                 ].map((soc, sIdx) => {
                   const SocIcon = soc.icon;
                   return (
-                    <a 
-                      key={sIdx} 
+                    <a
+                      key={sIdx}
                       href={soc.href}
                       title={soc.title}
                       className="h-10 w-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gold-400 hover:bg-gold-400 hover:text-green-950 transition-all duration-300 shadow-md hover:-translate-y-0.5"
@@ -325,7 +325,7 @@ function About() {
           <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 rounded-full bg-gold-400/5 blur-[120px]"></div>
         </div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -349,9 +349,9 @@ function About() {
             ].map((v, i) => {
               const IconComp = v.icon;
               return (
-                <motion.div 
-                  variants={itemVariants} 
-                  key={i} 
+                <motion.div
+                  variants={itemVariants}
+                  key={i}
                   className="glass-value-card flex flex-col items-center text-center"
                 >
                   <div className="glass-value-icon">
@@ -369,13 +369,13 @@ function About() {
       {/* 6. Team & Seminars & Achievements */}
       <section className="section-pad bg-green-100/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
-          
+
           {/* Personal Commitment */}
           <div className="max-w-3xl mx-auto">
             <div className="bg-green-900/10 p-8 md:p-10 rounded-2xl border border-green-700/10 text-center relative overflow-hidden">
               {/* Background decoration */}
               <div className="absolute -top-10 -right-10 w-24 h-24 bg-gold-400/5 rounded-full blur-xl"></div>
-              
+
               <div className="w-12 h-12 rounded-full bg-green-950/5 text-green-950 flex items-center justify-center border border-green-950/10 mx-auto mb-6">
                 <Icons.ShieldCheck size={24} />
               </div>
@@ -397,29 +397,29 @@ function About() {
               <h2 className="section-title section-title-accent inline-block">Our Achievements & Recognition</h2>
             </div>
             <div className="flex flex-col lg:flex-row gap-12 items-center bg-white p-8 rounded-card border border-green-700/5 shadow-sm">
-               <div className="lg:w-1/2 space-y-8">
-                 <div className="flex items-start gap-4">
-                    <div className="p-3 bg-green-100 text-green-700 rounded-full shrink-0"><Icons.Trophy size={24} /></div>
-                    <p className="text-green-950 font-medium text-lg leading-relaxed pt-1">Featured in documentaries and news segments for client success stories.</p>
-                 </div>
-                 <div className="flex items-start gap-4">
-                    <div className="p-3 bg-green-100 text-green-700 rounded-full shrink-0"><Icons.Award size={24} /></div>
-                    <p className="text-green-950 font-medium text-lg leading-relaxed pt-1">Invited as a guest speaker at premier management institutes for finance and investment sessions.</p>
-                 </div>
-                 <div className="flex items-start gap-4">
-                    <div className="p-3 bg-green-100 text-green-700 rounded-full shrink-0"><Icons.Handshake size={24} /></div>
-                    <p className="text-green-950 font-medium text-lg leading-relaxed pt-1">Trusted by a growing base of working professionals, entrepreneurs, and high-net-worth clients.</p>
-                 </div>
-               </div>
-               <div className="lg:w-1/2 w-full">
-                  <div className="w-full aspect-[4/3] bg-green-50 rounded-xl flex flex-col items-center justify-center border border-green-700/10 shadow-inner relative overflow-hidden">
-                     <Icons.Medal className="text-green-700/10 w-32 h-32 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                     <div className="z-10 text-center">
-                       <Icons.Image className="text-green-700/30 w-16 h-16 mx-auto mb-4" />
-                       <span className="text-green-950/50 font-semibold uppercase tracking-wider text-sm">Achievement Photo</span>
-                     </div>
+              <div className="lg:w-1/2 space-y-8">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-green-100 text-green-700 rounded-full shrink-0"><Icons.Trophy size={24} /></div>
+                  <p className="text-green-950 font-medium text-lg leading-relaxed pt-1">Featured in documentaries and news segments for client success stories.</p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-green-100 text-green-700 rounded-full shrink-0"><Icons.Award size={24} /></div>
+                  <p className="text-green-950 font-medium text-lg leading-relaxed pt-1">Invited as a guest speaker at premier management institutes for finance and investment sessions.</p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-green-100 text-green-700 rounded-full shrink-0"><Icons.Handshake size={24} /></div>
+                  <p className="text-green-950 font-medium text-lg leading-relaxed pt-1">Trusted by a growing base of working professionals, entrepreneurs, and high-net-worth clients.</p>
+                </div>
+              </div>
+              <div className="lg:w-1/2 w-full">
+                <div className="w-full aspect-[4/3] bg-green-50 rounded-xl flex flex-col items-center justify-center border border-green-700/10 shadow-inner relative overflow-hidden">
+                  <Icons.Medal className="text-green-700/10 w-32 h-32 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                  <div className="z-10 text-center">
+                    <Icons.Image className="text-green-700/30 w-16 h-16 mx-auto mb-4" />
+                    <span className="text-green-950/50 font-semibold uppercase tracking-wider text-sm">Achievement Photo</span>
                   </div>
-               </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -429,11 +429,11 @@ function About() {
       {/* 7. Our Approach */}
       <section className="section-pad bg-soft-purple">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="section-title section-title-accent inline-block">Our Approach</h2>
             <p className="text-ink-muted text-body-lg mt-4">Comprehensive financial solutions tailored to your needs</p>
           </div>
-          
+
           <div className="max-w-4xl mx-auto space-y-12 relative before:absolute before:inset-0 before:ml-6 md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-gradient-to-b before:from-green-100 before:via-gold-400/50 before:to-green-100">
             {[
               { step: 1, title: "Understanding the client's Financial Goal", image: "/images/approach_step1.png" },
@@ -450,8 +450,8 @@ function About() {
                 {/* Content Card */}
                 <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-white rounded-card border border-green-700/10 shadow-sm hover:shadow-md hover:border-green-700 transition-all duration-300 overflow-hidden group/card">
                   <div className="w-full aspect-video bg-green-50 flex items-center justify-center border-b border-green-700/10 relative overflow-hidden">
-                     <img src={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" />
-                     <div className="absolute inset-0 bg-gradient-to-t from-green-950/60 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
+                    <img src={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-green-950/60 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
                   </div>
                   <div className="p-6 text-center bg-white relative z-10">
                     <h3 className="font-bold text-green-950 text-lg">{s.title}</h3>
@@ -475,8 +475,8 @@ function About() {
               Choosing MK Investors means partnering with a wealth advisor dedicated to your growth, safety, and long-term financial freedom.
             </p>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -491,9 +491,9 @@ function About() {
             ].map((v, i) => {
               const IconComp = v.icon;
               return (
-                <motion.div 
-                  variants={itemVariants} 
-                  key={i} 
+                <motion.div
+                  variants={itemVariants}
+                  key={i}
                   className="premium-outline-card flex flex-col items-center text-center"
                 >
                   <div className="premium-outline-card-icon">
@@ -517,22 +517,22 @@ function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="bg-white/5 backdrop-blur-sm p-10 rounded-card border border-gold-400/20 hover:bg-white/10 transition-colors duration-300">
-               <div className="w-16 h-16 bg-gold-400/20 rounded-full flex items-center justify-center text-gold-400 mb-8 border border-gold-400/30">
-                 <Icons.Rocket size={32} />
-               </div>
-               <h3 className="text-3xl font-bold mb-6 tracking-tight">Our Mission</h3>
-               <p className="text-gray-300 leading-relaxed text-lg">
-                 To deliver personalized financial strategies that help our clients build, protect, and grow their wealth—while fostering financial literacy and long-term confidence across generations.
-               </p>
+              <div className="w-16 h-16 bg-gold-400/20 rounded-full flex items-center justify-center text-gold-400 mb-8 border border-gold-400/30">
+                <Icons.Rocket size={32} />
+              </div>
+              <h3 className="text-3xl font-bold mb-6 tracking-tight">Our Mission</h3>
+              <p className="text-gray-300 leading-relaxed text-lg">
+                To deliver personalized financial strategies that help our clients build, protect, and grow their wealth—while fostering financial literacy and long-term confidence across generations.
+              </p>
             </div>
             <div className="bg-white/5 backdrop-blur-sm p-10 rounded-card border border-gold-400/20 hover:bg-white/10 transition-colors duration-300">
-               <div className="w-16 h-16 bg-gold-400/20 rounded-full flex items-center justify-center text-gold-400 mb-8 border border-gold-400/30">
-                 <Icons.Eye size={32} />
-               </div>
-               <h3 className="text-3xl font-bold mb-6 tracking-tight">Our Vision</h3>
-               <p className="text-gray-300 leading-relaxed text-lg">
-                 To become the most trusted and client-first financial advisory firm, empowering individuals and families through transparent advice, strategic solutions, and lifelong relationships.
-               </p>
+              <div className="w-16 h-16 bg-gold-400/20 rounded-full flex items-center justify-center text-gold-400 mb-8 border border-gold-400/30">
+                <Icons.Eye size={32} />
+              </div>
+              <h3 className="text-3xl font-bold mb-6 tracking-tight">Our Vision</h3>
+              <p className="text-gray-300 leading-relaxed text-lg">
+                To become the most trusted and client-first financial advisory firm, empowering individuals and families through transparent advice, strategic solutions, and lifelong relationships.
+              </p>
             </div>
           </div>
         </div>

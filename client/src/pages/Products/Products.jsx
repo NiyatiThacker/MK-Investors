@@ -103,7 +103,7 @@ function Products() {
     const rotateY = (x / rect.width - 0.5) * multiplier;
     const rotateX = (y / rect.height - 0.5) * -multiplier;
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-    
+
     // Set custom properties to feed the radial hover glow in CSS
     card.style.setProperty('--x', `${x}px`);
     card.style.setProperty('--y', `${y}px`);
@@ -208,9 +208,9 @@ function Products() {
       <section className="relative bg-transparent text-white pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden z-10">
         {/* Underlying Background Image with Dark Color Gradient Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/products-hero-bg.png" 
-            className="w-full h-full object-cover opacity-65" 
+          <img
+            src="/images/products-hero-bg.png"
+            className="w-full h-full object-cover opacity-65"
             alt="MK Investors Products Hero Background"
           />
           {/* Tint overlay matching the Products page deep bg */}
@@ -219,7 +219,7 @@ function Products() {
           <div className="absolute inset-0 bg-gradient-to-t from-green-950 via-transparent to-transparent"></div>
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -237,7 +237,7 @@ function Products() {
             Explore MK Investors' curated selection of high-performance financial products, tailored to maximize your growth and protect your wealth.
           </p>
         </motion.div>
-        
+
         {/* Decorative Gold Bottom Wave Accent */}
         <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-400/40 to-transparent"></div>
       </section>
@@ -245,7 +245,7 @@ function Products() {
       {/* 2. Products Layout Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -255,7 +255,7 @@ function Products() {
             Our Key Products
             <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-1 bg-gold-400 rounded"></div>
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -266,7 +266,7 @@ function Products() {
           </motion.p>
         </div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -283,10 +283,10 @@ function Products() {
             ];
 
             return (
-              <motion.div 
-                variants={itemVariants} 
-                key={product.id} 
-                id={product.id} 
+              <motion.div
+                variants={itemVariants}
+                key={product.id}
+                id={product.id}
                 className="glass-product-card scroll-mt-24"
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
@@ -319,9 +319,9 @@ function Products() {
                   </div>
 
                   {/* Invest Button */}
-                  <Link 
-                    to={ROUTES.CONTACT} 
-                    state={{ subject: getServiceCategory(product.id) }} 
+                  <Link
+                    to={ROUTES.CONTACT}
+                    state={{ subject: getServiceCategory(product.id) }}
                     className="glass-card-button text-center w-full flex items-center justify-center gap-1.5"
                   >
                     <span>Invest Now</span>

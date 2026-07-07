@@ -135,7 +135,7 @@ function Calculator() {
       for (let i = 1; i <= y; i++) {
         const currentMonths = i * 12;
         totalInvested = p * currentMonths;
-        currentTotal = p * ( (Math.pow(1 + monthlyRate, currentMonths) - 1) / (1 - Math.pow(1 + monthlyRate, -1)) );
+        currentTotal = p * ((Math.pow(1 + monthlyRate, currentMonths) - 1) / (1 - Math.pow(1 + monthlyRate, -1)));
 
         data.push({
           year: i,
@@ -382,8 +382,8 @@ function Calculator() {
 
                 {isDropdownOpen && (
                   <>
-                    <div 
-                      className="fixed inset-0 z-40" 
+                    <div
+                      className="fixed inset-0 z-40"
                       onClick={() => setIsDropdownOpen(false)}
                     />
                     <div className="absolute top-full left-0 mt-2 w-full sm:w-[350px] bg-white rounded-xl shadow-xl border border-green-700/10 z-50 overflow-hidden animate-fade-in">
