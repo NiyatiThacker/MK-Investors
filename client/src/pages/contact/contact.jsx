@@ -16,6 +16,7 @@ function Contact() {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedPhone1, setCopiedPhone1] = useState(false);
   const [copiedPhone2, setCopiedPhone2] = useState(false);
 
@@ -45,18 +46,26 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-      const response = await fetch(`${apiUrl}/api/contact`, {
+      const scriptUrl = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL;
+      
+      if (!scriptUrl || scriptUrl === 'YOUR_URL_HERE') {
+        toast.error('Google Apps Script URL is missing. Please configure it in .env.');
+        return;
+      }
+
+      // We use text/plain to avoid Google Apps Script CORS preflight errors
+      const response = await fetch(scriptUrl, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'text/plain;charset=utf-8',
         },
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
+      if (response.ok || response.type === 'opaque') {
         toast.success('Thank you for your message. We have received it and will get back to you soon!');
         setFormData({ fullName: '', email: '', phone: '', subject: '', message: '' });
       } else {
@@ -65,6 +74,8 @@ function Contact() {
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error('Network error. Please ensure the server is running.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -88,7 +99,7 @@ function Contact() {
   return (
     <div className="bg-slate-50 min-h-screen">
       {/* Top Banner */}
-      <section className="relative bg-gradient-to-br from-green-950 via-green-900 to-green-950 text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-green-950 via-green-900 to-green-950 text-white pt-40 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Decorative Circles */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gold-400 blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
@@ -289,9 +300,17 @@ function Contact() {
               <div className="pt-6 md:pl-[16.666667%]">
                 <button
                   type="submit"
-                  className="btn-primary px-8 py-3.5 shadow-lg shadow-gold-400/15"
+                  disabled={isSubmitting}
+                  className="bg-green-950 text-white hover:bg-green-900 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-950/20 px-8 py-3.5 rounded-lg font-semibold shadow-lg shadow-green-950/15 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-75 disabled:cursor-not-allowed disabled:hover:transform-none disabled:hover:shadow-lg"
                 >
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <Icons.Loader2 size={18} className="animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <span>Send Message</span>
+                  )}
                 </button>
               </div>
             </motion.form>

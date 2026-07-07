@@ -275,7 +275,7 @@ function Navbar() {
     <LayoutGroup id="navbar-layout">
       <nav
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-350 ${isScrolled
-          ? 'bg-black/90 backdrop-blur-md shadow-navbar py-3 border-b border-white/5'
+          ? 'bg-black lg:bg-black/90 lg:backdrop-blur-md shadow-navbar py-3 border-b border-white/5'
           : 'bg-black py-5'
           }`}
       >
@@ -402,7 +402,7 @@ function Navbar() {
 
         {/* Mobile Drawer Slide-in Menu */}
         <div
-          className={`fixed inset-y-0 right-0 w-80 bg-green-950/95 backdrop-blur-lg border-l border-gold-400/10 shadow-2xl p-6 z-50 transform transition-transform duration-350 ease-in-out lg:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`fixed inset-y-0 right-0 w-80 bg-black lg:bg-black/95 backdrop-blur-md border-l border-white/5 shadow-2xl p-6 z-50 transform transition-transform duration-350 ease-in-out lg:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
         >
           <div className="flex items-center justify-between mb-8 pb-4 border-b border-gold-400/15">
@@ -418,7 +418,7 @@ function Navbar() {
           <div className="flex flex-col gap-5 overflow-y-auto max-h-[calc(100vh-140px)]">
             <Link
               to={ROUTES.HOME} onClick={(e) => handleLinkClick(ROUTES.HOME, e)}
-              className={`text-base font-semibold py-1.5 transition-colors duration-250 ${isLinkActive(ROUTES.HOME) ? 'text-gold-400 border-l-2 border-gold-400 pl-2' : 'text-white hover:text-gold-400'
+              className={`text-base font-semibold py-1.5 transition-colors duration-250 ${isLinkActive(ROUTES.HOME) ? 'text-gold-400 border-l-2 border-gold-400 pl-2' : 'text-white/70 hover:text-white'
                 }`}
             >
               Home
@@ -426,7 +426,7 @@ function Navbar() {
 
             <Link
               to={ROUTES.ABOUT} onClick={(e) => handleLinkClick(ROUTES.ABOUT, e)}
-              className={`text-base font-semibold py-1.5 transition-colors duration-250 ${isLinkActive(ROUTES.ABOUT) ? 'text-gold-400 border-l-2 border-gold-400 pl-2' : 'text-white hover:text-gold-400'
+              className={`text-base font-semibold py-1.5 transition-colors duration-250 ${isLinkActive(ROUTES.ABOUT) ? 'text-gold-400 border-l-2 border-gold-400 pl-2' : 'text-white/70 hover:text-white'
                 }`}
             >
               About Us
@@ -436,7 +436,7 @@ function Navbar() {
             <div className="flex flex-col">
               <button
                 onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                className={`flex items-center justify-between text-base font-semibold py-1.5 transition-colors duration-250 focus:outline-none cursor-pointer ${location.pathname.startsWith('/services') ? 'text-gold-400' : 'text-white hover:text-gold-400'
+                className={`flex items-center justify-between text-base font-semibold py-1.5 transition-colors duration-250 focus:outline-none cursor-pointer ${location.pathname.startsWith('/services') ? 'text-gold-400' : 'text-white/70 hover:text-white'
                   }`}
               >
                 <span>Services</span>
@@ -450,7 +450,7 @@ function Navbar() {
                 <div className="pl-4 mt-2 border-l border-gold-400/20 flex flex-col gap-3">
                   <Link
                     to={ROUTES.SERVICES}
-                    className="text-sm text-gray-300 hover:text-gold-400 py-1 transition-colors duration-250 font-medium"
+                    className="text-sm text-white/70 hover:text-white py-1 transition-colors duration-250 font-medium"
                   >
                     All Services Overview
                   </Link>
@@ -470,7 +470,7 @@ function Navbar() {
                           }
                         }
                       }}
-                      className="text-sm text-gray-300 hover:text-gold-400 py-1 transition-colors duration-250"
+                      className={`text-sm py-1 transition-colors duration-250 ${window.location.pathname === service.href.split('#')[0] ? 'text-gold-400' : 'text-white/70 hover:text-white'}`}
                     >
                       {service.title}
                     </Link>
@@ -481,7 +481,7 @@ function Navbar() {
 
             <Link
               to={ROUTES.PRODUCTS} onClick={(e) => handleLinkClick(ROUTES.PRODUCTS, e)}
-              className={`text-base font-semibold py-1.5 transition-colors duration-250 ${isLinkActive(ROUTES.PRODUCTS) ? 'text-gold-400 border-l-2 border-gold-400 pl-2' : 'text-white hover:text-gold-400'
+              className={`text-base font-semibold py-1.5 transition-colors duration-250 ${isLinkActive(ROUTES.PRODUCTS) ? 'text-gold-400 border-l-2 border-gold-400 pl-2' : 'text-white/70 hover:text-white'
                 }`}
             >
               Products
@@ -489,7 +489,7 @@ function Navbar() {
 
             <Link
               to={ROUTES.CALCULATORS} onClick={(e) => handleLinkClick(ROUTES.CALCULATORS, e)}
-              className={`text-base font-semibold py-1.5 transition-colors duration-250 ${isLinkActive(ROUTES.CALCULATORS) ? 'text-gold-400 border-l-2 border-gold-400 pl-2' : 'text-white hover:text-gold-400'
+              className={`text-base font-semibold py-1.5 transition-colors duration-250 ${isLinkActive(ROUTES.CALCULATORS) ? 'text-gold-400 border-l-2 border-gold-400 pl-2' : 'text-white/70 hover:text-white'
                 }`}
             >
               Calculators
@@ -497,7 +497,7 @@ function Navbar() {
 
             <Link
               to={ROUTES.CONTACT} onClick={(e) => handleLinkClick(ROUTES.CONTACT, e)}
-              className={`text-base font-semibold py-1.5 transition-colors duration-250 ${isLinkActive(ROUTES.CONTACT) ? 'text-gold-400 border-l-2 border-gold-400 pl-2' : 'text-white hover:text-gold-400'
+              className={`text-base font-semibold py-1.5 transition-colors duration-250 ${isLinkActive(ROUTES.CONTACT) ? 'text-gold-400 border-l-2 border-gold-400 pl-2' : 'text-white/70 hover:text-white'
                 }`}
             >
               Contact Us

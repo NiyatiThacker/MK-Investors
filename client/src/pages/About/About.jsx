@@ -4,6 +4,47 @@ import * as Icons from 'lucide-react';
 import { ROUTES } from '../../constants/routes';
 import { motion } from 'framer-motion';
 
+// Custom SVG Social Icons (since brand icons are removed in recent Lucide versions)
+function LinkedinIcon({ size = 16, className = '' }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect x="2" y="9" width="4" height="12" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
+
+function InstagramIcon({ size = 16, className = '' }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
+
 // Stat counter sub-component for premium scroll feel
 function StatItem({ value, label, suffix = '' }) {
   const [displayValue, setDisplayValue] = useState(0);
@@ -206,10 +247,10 @@ function About() {
               {/* Floating Social Connection Block */}
               <div className="flex gap-4 mt-6">
                 {[
-                  { icon: Icons.Mail, href: "mailto:manthan@mkinvestors.com", title: "Email" },
-                  { icon: Icons.Globe, href: "#", title: "Website" },
-                  { icon: Icons.Phone, href: "tel:+919999999999", title: "Call" },
-                  { icon: Icons.MessageSquare, href: "https://wa.me/919999999999", title: "WhatsApp" }
+                  { icon: LinkedinIcon, href: "https://www.linkedin.com/in/kakkad-manthan13", title: "LinkedIn" },
+                  { icon: Icons.Mail, href: "mailto:manthankakkad50@gmail.com", title: "Email" },
+                  { icon: Icons.Phone, href: "tel:+919824596906", title: "Phone" },
+                  { icon: InstagramIcon, href: "https://www.instagram.com/manthankakkad13?igsh=Nmg4aWo5cjZyOHZh", title: "Instagram" }
                 ].map((soc, sIdx) => {
                   const SocIcon = soc.icon;
                   return (

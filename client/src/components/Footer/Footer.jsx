@@ -79,7 +79,7 @@ function Footer() {
             <p className="text-gray-300 text-sm leading-relaxed">
               MK Investors is a premier financial advisory service dedicated to simplifying financial planning, wealth generation, strategic investments, and reliable insurance planning.
             </p>
-            {/* Social Icons */}
+            {/* Social Icons & Contact Links */}
             <div className="flex items-center gap-4">
               <a
                 href="https://www.linkedin.com/in/kakkad-manthan13"
@@ -98,6 +98,20 @@ function Footer() {
                 aria-label="Instagram"
               >
                 <InstagramIcon size={16} />
+              </a>
+              <a
+                href="tel:+919824596906"
+                className="h-9 w-9 rounded-full bg-green-700/20 hover:bg-gold-400 hover:text-green-950 flex items-center justify-center text-gold-400 transition-all duration-250 border border-gold-400/10"
+                aria-label="Phone"
+              >
+                <Phone size={16} />
+              </a>
+              <a
+                href="mailto:manthankakkad50@gmail.com"
+                className="h-9 w-9 rounded-full bg-green-700/20 hover:bg-gold-400 hover:text-green-950 flex items-center justify-center text-gold-400 transition-all duration-250 border border-gold-400/10"
+                aria-label="Email"
+              >
+                <Mail size={16} />
               </a>
             </div>
           </div>

@@ -405,6 +405,52 @@ function Home() {
     }
   }, []);
 
+  // Auto-scroll logic for What We Offer carousel
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    let scrollInterval;
+
+    const startAutoScroll = () => {
+      scrollInterval = setInterval(() => {
+        setActiveIndex((currentIdx) => {
+          let nextIndex = currentIdx + 1;
+          if (nextIndex >= SERVICES.length) {
+            nextIndex = 0;
+          }
+          
+          const cardWidth = container.querySelector('.scroll-snap-item')?.clientWidth || 320;
+          const gap = 16;
+          
+          container.scrollTo({
+            left: nextIndex * (cardWidth + gap),
+            behavior: 'smooth'
+          });
+          
+          return nextIndex;
+        });
+      }, 3500); // Scroll every 3.5 seconds
+    };
+
+    startAutoScroll();
+
+    const pauseScroll = () => clearInterval(scrollInterval);
+    
+    container.addEventListener('mouseenter', pauseScroll);
+    container.addEventListener('mouseleave', startAutoScroll);
+    container.addEventListener('touchstart', pauseScroll, { passive: true });
+    container.addEventListener('touchend', startAutoScroll, { passive: true });
+
+    return () => {
+      clearInterval(scrollInterval);
+      container.removeEventListener('mouseenter', pauseScroll);
+      container.removeEventListener('mouseleave', startAutoScroll);
+      container.removeEventListener('touchstart', pauseScroll);
+      container.removeEventListener('touchend', startAutoScroll);
+    };
+  }, []);
+
   const handleScroll = (e) => {
     const container = e.currentTarget;
     const scrollLeft = container.scrollLeft;
@@ -644,7 +690,7 @@ function Home() {
                   key={product.id}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: false, margin: "-50px" }}
+                  viewport={{ once: false, margin: isTouch ? "-25% 0px" : "-50px" }}
                   variants={cardVariants}
                   className="product-hover-card"
                 >
